@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.carltonridgevilla.com/sitemap-index.xml
