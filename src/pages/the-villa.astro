@@ -2,15 +2,15 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const houseFeatures = [
-  { title: 'The Kitchen', img: '/images/Kitchen.jpeg', copy: 'A double oven and a run of counter space built for real cooking, opening directly onto the covered dining patio so nothing gets cold, or lonely, on the way to the table.' },
-  { title: 'The Living Room', img: '/images/LivingRoom.jpeg', copy: 'High ceilings and cross-breezes from ceiling fans throughout, with the living area folding out onto a covered terrace for indoor-outdoor evenings.' },
-  { title: 'The Master Suite', img: '/images/MasterBathroom.jpeg', copy: 'His-and-hers vanities, a walk-in dressing room, and a jacuzzi bath that converts to a private steam room. Every bedroom in the house is en suite.' },
-  { title: 'Poolside Bedroom', img: '/images/BedroomByPool.jpeg', copy: 'One of four bedrooms in the main house positioned to wake up to the pool and gardens, air-conditioned alongside every living space in the villa.' },
+  { title: 'The Kitchen', img: 'images/Kitchen.jpeg', copy: 'A double oven and a run of counter space built for real cooking, opening directly onto the covered dining patio so nothing gets cold, or lonely, on the way to the table.' },
+  { title: 'The Living Room', img: 'images/LivingRoom.jpeg', copy: 'High ceilings and cross-breezes from ceiling fans throughout, with the living area folding out onto a covered terrace for indoor-outdoor evenings.' },
+  { title: 'The Master Suite', img: 'images/MasterBathroom.jpeg', copy: 'His-and-hers vanities, a walk-in dressing room, and a jacuzzi bath that converts to a private steam room. Every bedroom in the house is en suite.' },
+  { title: 'Poolside Bedroom', img: 'images/BedroomByPool.jpeg', copy: 'One of four bedrooms in the main house positioned to wake up to the pool and gardens, air-conditioned alongside every living space in the villa.' },
 ];
 ---
 <BaseLayout title="The Villa" description="A room-by-room look at Carlton Ridge's main house, cottage and grounds.">
   <section class="page-hero">
-    <img src="/images/LivingRoom.jpeg" alt="Interior of the main living room at Carlton Ridge" class="page-hero__img" />
+    <img src="images/LivingRoom.jpeg" alt="Interior of the main living room at Carlton Ridge" class="page-hero__img" />
     <div class="page-hero__scrim"></div>
     <div class="wrap page-hero__content">
       <p class="eyebrow eyebrow--light">The Property</p>
@@ -47,8 +47,8 @@ const houseFeatures = [
         <p>Like the main house, it\u2019s fully air-conditioned and finished to the same standard throughout.</p>
       </div>
       <div class="cottage__images">
-        <img src="/images/CottageLivingRoom.jpeg" alt="Cottage living room at Carlton Ridge" />
-        <img src="/images/CottageTerrace.jpeg" alt="Cottage private terrace at Carlton Ridge" />
+        <img src="images/CottageLivingRoom.jpeg" alt="Cottage living room at Carlton Ridge" />
+        <img src="images/CottageTerrace.jpeg" alt="Cottage private terrace at Carlton Ridge" />
       </div>
     </div>
   </section>
@@ -56,8 +56,8 @@ const houseFeatures = [
   <section class="section section-sand grounds">
     <div class="wrap grounds__grid">
       <div class="grounds__images">
-        <img src="/images/Pool.jpeg" alt="Heptagonal swimming pool at Carlton Ridge" />
-        <img src="/images/Patio.jpeg" alt="Covered outdoor patio at Carlton Ridge" />
+        <img src="images/Pool.jpeg" alt="Heptagonal swimming pool at Carlton Ridge" />
+        <img src="images/Patio.jpeg" alt="Covered outdoor patio at Carlton Ridge" />
       </div>
       <div class="grounds__text">
         <p class="eyebrow">The Grounds</p>
@@ -77,7 +77,7 @@ const houseFeatures = [
       </div>
     </div>
     <div class="wrap games-room">
-      <img src="/images/PoolTable.jpeg" alt="Games room with pool table at Carlton Ridge" />
+      <img src="images/PoolTable.jpeg" alt="Games room with pool table at Carlton Ridge" />
     </div>
   </section>
 
