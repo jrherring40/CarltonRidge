@@ -3,6 +3,5 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   integrations: [react()],
-  site: 'https://github.io/jrherring40/CarltonRidge',
-  base: '/CarltonRidge'
+  site: 'https://github.io/jrherring40/CarltonRidge'
 });
