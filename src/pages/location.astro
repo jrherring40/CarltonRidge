@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const nearby = [
+  { name: 'Holetown', detail: 'The West Coast\u2019s historic centre \u2014 boutiques, restaurants and the settlement where the English first landed in Barbados.' },
+  { name: 'Speightstown', detail: 'A working fishing town turned quietly fashionable, a short drive up the coast.' },
+  { name: 'The Beach', detail: 'Near-beach access to the calm, reef-protected water the West Coast is known for.' },
+  { name: 'Golf', detail: 'Within easy reach of the island\u2019s West Coast courses, including Royal Westmoreland and Apes Hill.' },
+];
+---
+<BaseLayout title="Location" description="Carlton Ridge sits in Carlton View Estate on Barbados's West Coast, near Holetown and Speightstown.">
+  <section class="page-hero">
+    <img src="/images/AerialPlan.jpeg" alt="Aerial view of Carlton Ridge and its surroundings" class="page-hero__img" />
+    <div class="page-hero__scrim"></div>
+    <div class="wrap page-hero__content">
+      <p class="eyebrow eyebrow--light">Carlton View Estate</p>
+      <h1>Location</h1>
+      <p>West Coast, St. James, Barbados</p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="wrap intro">
+      <p class="eyebrow">The West Coast</p>
+      <h2>Barbados at its most unhurried</h2>
+      <div class="divider"></div>
+      <p class="lede">Carlton Ridge sits within Carlton View Estate, on Barbados\u2019s celebrated West Coast &mdash; the stretch of coastline known locally as the Platinum Coast for its calm, reef-sheltered water and long tradition of quiet, well-kept residences. Holetown and Speightstown are both close by, along with the island\u2019s best golf and some of its finest dining.</p>
+    </div>
+
+    <div class="wrap nearby-grid">
+      {nearby.map(n => (
+        <div class="nearby-card">
+          <h3>{n.name}</h3>
+          <p>{n.detail}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-navy map-section">
+    <div class="wrap map-section__inner">
+      <p class="eyebrow eyebrow--light">Find Us</p>
+      <h2>Holetown, St. James, Barbados</h2>
+    </div>
+    <div class="map-embed">
+      <iframe
+        title="Map showing Holetown, St. James, Barbados"
+        src="https://maps.google.com/maps?q=Holetown%2C%20St.%20James%2C%20Barbados&z=13&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="wrap cta-band__inner">
+      <h2>Plan your stay on the West Coast</h2>
+      <a href="/enquire" class="btn btn-outline-dark">Enquire Now</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { position: relative; height: 46vh; min-height: 340px; display: flex; align-items: flex-end; color: var(--white); }
+  .page-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .page-hero__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,38,58,0.4), rgba(22,38,58,0.85)); }
+  .page-hero__content { position: relative; padding-bottom: 2.5rem; }
+  .page-hero__content p:last-child { color: var(--duck-egg-pale); margin-top: 0.4rem; }
+  .eyebrow--light { color: var(--duck-egg); }
+  .eyebrow--light::before { background: var(--duck-egg); }
+
+  .lede { max-width: 700px; color: var(--navy-soft); font-size: 1.05rem; }
+
+  .nearby-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; margin-top: 3rem; }
+  .nearby-card { padding: 1.8rem; background: var(--duck-egg-pale); }
+  .nearby-card h3 { font-size: 1.2rem; }
+  .nearby-card p { font-size: 0.88rem; color: var(--navy-soft); margin: 0; }
+
+  .map-section { padding: 5rem 0 0; }
+  .map-section__inner { padding-bottom: 2.5rem; }
+  .map-embed { width: 100%; height: 420px; }
+  .map-embed iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.15); }
+
+  @media (max-width: 900px) {
+    .nearby-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .nearby-grid { grid-template-columns: 1fr; }
+  }
+</style>

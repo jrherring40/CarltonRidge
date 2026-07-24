@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const images = [
+  { src: '/images/ArialSeaview.jpeg', alt: 'Aerial sea view of Carlton Ridge and the coastline' },
+  { src: '/images/AerialPlan.jpeg', alt: 'Aerial plan view of the estate' },
+  { src: '/images/Pool.jpeg', alt: 'The heptagonal swimming pool' },
+  { src: '/images/Patio.jpeg', alt: 'Covered outdoor dining patio' },
+  { src: '/images/LivingRoom.jpeg', alt: 'Main house living room' },
+  { src: '/images/Kitchen.jpeg', alt: 'Chef\u2019s kitchen' },
+  { src: '/images/MasterBathroom.jpeg', alt: 'Master bathroom with jacuzzi bath' },
+  { src: '/images/BedroomByPool.jpeg', alt: 'Bedroom overlooking the pool' },
+  { src: '/images/CottageLivingRoom.jpeg', alt: 'Cottage living room' },
+  { src: '/images/CottageTerrace.jpeg', alt: 'Cottage private terrace' },
+  { src: '/images/PoolTable.jpeg', alt: 'Games room with pool table' },
+];
+---
+<BaseLayout title="Gallery" description="Photographs of Carlton Ridge — main house, cottage, pool and grounds.">
+  <section class="page-hero">
+    <div class="wrap page-hero__content">
+      <p class="eyebrow">In Pictures</p>
+      <h1>Gallery</h1>
+      <p>Eleven views of Carlton Ridge, from the air to the pool terrace.</p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="wrap">
+      <div class="masonry">
+        {images.map((img, i) => (
+          <button class="masonry__item" data-index={i} aria-label={`Open ${img.alt}`}>
+            <img src={img.src} alt={img.alt} loading="lazy" />
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous image">&#8249;</button>
+    <img class="lightbox__img" id="lightboxImg" src="" alt="" />
+    <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next image">&#8250;</button>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-hero { background: var(--navy); padding: 6rem 0 3rem; color: var(--white); }
+  .page-hero__content p:last-child { color: var(--duck-egg-pale); margin-top: 0.5rem; }
+
+  .masonry {
+    columns: 3 260px;
+    column-gap: 1.2rem;
+  }
+  .masonry__item {
+    display: block;
+    width: 100%;
+    margin: 0 0 1.2rem;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    break-inside: avoid;
+  }
+  .masonry__item img { width: 100%; display: block; transition: opacity 0.3s ease; }
+  .masonry__item:hover img { opacity: 0.85; }
+
+  .lightbox {
+    position: fixed; inset: 0; background: rgba(22,38,58,0.96);
+    display: none; align-items: center; justify-content: center;
+    z-index: 200; padding: 3rem;
+  }
+  .lightbox.is-open { display: flex; }
+  .lightbox__img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
+  .lightbox__close {
+    position: absolute; top: 1.5rem; right: 2rem;
+    background: none; border: none; color: var(--white);
+    font-size: 2.2rem; cursor: pointer; line-height: 1;
+  }
+  .lightbox__nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: none; border: 1px solid rgba(255,255,255,0.4);
+    color: var(--white); font-size: 1.8rem; width: 48px; height: 48px;
+    cursor: pointer; border-radius: 50%;
+  }
+  .lightbox__nav--prev { left: 1.5rem; }
+  .lightbox__nav--next { right: 1.5rem; }
+
+  @media (max-width: 720px) {
+    .masonry { columns: 1; }
+  }
+</style>
+
+<script>
+  const images = Array.from(document.querySelectorAll<HTMLButtonElement>('.masonry__item'));
+  const lightbox = document.getElementById('lightbox')!;
+  const lightboxImg = document.getElementById('lightboxImg') as HTMLImageElement;
+  let current = 0;
+
+  function open(i: number) {
+    current = i;
+    const img = images[i].querySelector('img') as HTMLImageElement;
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('is-open');
+  }
+  function close() { lightbox.classList.remove('is-open'); }
+  function nav(delta: number) {
+    current = (current + delta + images.length) % images.length;
+    open(current);
+  }
+
+  images.forEach((btn, i) => btn.addEventListener('click', () => open(i)));
+  document.getElementById('lightboxClose')?.addEventListener('click', close);
+  document.getElementById('lightboxPrev')?.addEventListener('click', () => nav(-1));
+  document.getElementById('lightboxNext')?.addEventListener('click', () => nav(1));
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') nav(-1);
+    if (e.key === 'ArrowRight') nav(1);
+  });
+</script>

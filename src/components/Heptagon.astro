@@ -1,0 +1,21 @@
+---
+interface Props {
+  size?: number;
+  stroke?: string;
+  strokeWidth?: number;
+  fill?: string;
+  class?: string;
+}
+const { size = 120, stroke = 'var(--gold)', strokeWidth = 1, fill = 'none', class: klass = '' } = Astro.props;
+
+// Regular heptagon points, echoing Carlton Ridge's own pool geometry
+const points = Array.from({ length: 7 }, (_, i) => {
+  const angle = (Math.PI * 2 * i) / 7 - Math.PI / 2;
+  const x = 50 + 48 * Math.cos(angle);
+  const y = 50 + 48 * Math.sin(angle);
+  return `${x.toFixed(2)},${y.toFixed(2)}`;
+}).join(' ');
+---
+<svg class={klass} width={size} height={size} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <polygon points={points} stroke={stroke} stroke-width={strokeWidth} fill={fill} />
+</svg>

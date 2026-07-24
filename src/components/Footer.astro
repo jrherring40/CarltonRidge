@@ -1,0 +1,79 @@
+---
+import Heptagon from './Heptagon.astro';
+---
+<footer class="site-footer">
+  <Heptagon size={340} stroke="rgba(175,201,196,0.15)" class="footer-motif" />
+  <div class="wrap footer-inner">
+    <div class="footer-col">
+      <span class="brand__name">Carlton Ridge</span>
+      <p class="footer-addr">Carlton View Estate, Holetown<br />St. James, Barbados, West Indies</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-label">Enquiries</p>
+      <a href="mailto:stay@carltonridgevilla.com">stay@carltonridgevilla.com</a>
+      <a href="https://wa.me/12460000000">WhatsApp +1 246 000 0000</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-label">Explore</p>
+      <a href="/the-villa">The Villa</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/location">Location</a>
+      <a href="/enquire">Enquire</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>&copy; {new Date().getFullYear()} Carlton Ridge Villa. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    background: var(--navy);
+    color: var(--duck-egg-pale);
+    padding: 4.5rem 0 2rem;
+    overflow: hidden;
+  }
+  .footer-motif {
+    position: absolute;
+    right: -60px; top: -80px;
+  }
+  .footer-inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(175,201,196,0.18);
+  }
+  .brand__name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--white);
+  }
+  .footer-addr { margin-top: 0.8rem; font-size: 0.85rem; color: var(--duck-egg); }
+  .footer-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.9rem;
+  }
+  .footer-col a {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+    color: var(--duck-egg-pale);
+    transition: color 0.25s ease;
+  }
+  .footer-col a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    position: relative;
+    padding-top: 1.6rem;
+    font-size: 0.75rem;
+    color: rgba(175,201,196,0.6);
+  }
+  @media (max-width: 720px) {
+    .footer-inner { grid-template-columns: 1fr; }
+  }
+</style>

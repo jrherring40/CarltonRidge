@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const houseFeatures = [
+  { title: 'The Kitchen', img: '/images/Kitchen.jpeg', copy: 'A double oven and a run of counter space built for real cooking, opening directly onto the covered dining patio so nothing gets cold, or lonely, on the way to the table.' },
+  { title: 'The Living Room', img: '/images/LivingRoom.jpeg', copy: 'High ceilings and cross-breezes from ceiling fans throughout, with the living area folding out onto a covered terrace for indoor-outdoor evenings.' },
+  { title: 'The Master Suite', img: '/images/MasterBathroom.jpeg', copy: 'His-and-hers vanities, a walk-in dressing room, and a jacuzzi bath that converts to a private steam room. Every bedroom in the house is en suite.' },
+  { title: 'Poolside Bedroom', img: '/images/BedroomByPool.jpeg', copy: 'One of four bedrooms in the main house positioned to wake up to the pool and gardens, air-conditioned alongside every living space in the villa.' },
+];
+---
+<BaseLayout title="The Villa" description="A room-by-room look at Carlton Ridge's main house, cottage and grounds.">
+  <section class="page-hero">
+    <img src="/images/LivingRoom.jpeg" alt="Interior of the main living room at Carlton Ridge" class="page-hero__img" />
+    <div class="page-hero__scrim"></div>
+    <div class="wrap page-hero__content">
+      <p class="eyebrow eyebrow--light">The Property</p>
+      <h1>The Villa</h1>
+      <p>Six thousand square feet, arranged across a main house and a private cottage.</p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="wrap">
+      <p class="eyebrow">The Main House</p>
+      <h2>Four bedrooms, built around light and breeze</h2>
+      <div class="divider"></div>
+      <p class="lede">The main house holds four en-suite bedrooms around a central living and dining space that opens fully to the garden. Nothing here is closed off &mdash; the kitchen sees the dining table, the living room sees the terrace, the terrace sees the pool.</p>
+    </div>
+    <div class="wrap feature-grid">
+      {houseFeatures.map(f => (
+        <div class="feature-card">
+          <img src={f.img} alt={f.title} />
+          <h3>{f.title}</h3>
+          <p>{f.copy}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="cottage" class="section section-duckegg cottage">
+    <div class="wrap cottage__grid">
+      <div class="cottage__text">
+        <p class="eyebrow">The Cottage</p>
+        <h2>A self-contained two-bedroom annex</h2>
+        <div class="divider"></div>
+        <p>Set apart from the main house, the cottage has its own open-plan living area, full kitchen and private patio &mdash; a genuinely independent second home within the estate. It suits grandparents who want their own space, older children who want a little distance, or friends travelling together who\u2019d rather not share a landing.</p>
+        <p>Like the main house, it\u2019s fully air-conditioned and finished to the same standard throughout.</p>
+      </div>
+      <div class="cottage__images">
+        <img src="/images/CottageLivingRoom.jpeg" alt="Cottage living room at Carlton Ridge" />
+        <img src="/images/CottageTerrace.jpeg" alt="Cottage private terrace at Carlton Ridge" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-sand grounds">
+    <div class="wrap grounds__grid">
+      <div class="grounds__images">
+        <img src="/images/Pool.jpeg" alt="Heptagonal swimming pool at Carlton Ridge" />
+        <img src="/images/Patio.jpeg" alt="Covered outdoor patio at Carlton Ridge" />
+      </div>
+      <div class="grounds__text">
+        <p class="eyebrow">The Grounds</p>
+        <h2>Gardens, pool &amp; a wet bar built for long afternoons</h2>
+        <div class="divider"></div>
+        <p>The outdoor deck and pool sit within manicured gardens dense with flowering trees, framed by a gazebo and wet bar built for entertaining. A games room with pool table sits just off the terrace for slower evenings.</p>
+        <ul class="grounds__list">
+          <li>Private heptagonal pool with sun deck</li>
+          <li>Gazebo &amp; outdoor wet bar</li>
+          <li>Covered dining patio</li>
+          <li>Games room with pool table</li>
+          <li>Whole-property backup generator</li>
+          <li>Two 1,000-gallon water tanks &amp; softener</li>
+          <li>Full irrigation system</li>
+          <li>Electronic gates &amp; alarm system</li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrap games-room">
+      <img src="/images/PoolTable.jpeg" alt="Games room with pool table at Carlton Ridge" />
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="wrap cta-band__inner">
+      <h2>See every room in the full gallery</h2>
+      <a href="/gallery" class="btn btn-outline-dark">View Gallery</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { position: relative; height: 52vh; min-height: 380px; display: flex; align-items: flex-end; color: var(--white); }
+  .page-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .page-hero__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,38,58,0.45), rgba(22,38,58,0.8)); }
+  .page-hero__content { position: relative; padding-bottom: 3rem; max-width: 640px; }
+  .page-hero__content p { color: var(--duck-egg-pale); margin-top: 0.6rem; }
+  .eyebrow--light { color: var(--duck-egg); }
+  .eyebrow--light::before { background: var(--duck-egg); }
+
+  .lede { max-width: 680px; color: var(--navy-soft); font-size: 1.05rem; }
+
+  .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; margin-top: 3rem; }
+  .feature-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; }
+  .feature-card p { font-size: 0.9rem; color: var(--navy-soft); }
+
+  .cottage__grid, .grounds__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+  .cottage__text p, .grounds__text p { color: var(--navy-soft); }
+  .cottage__images { display: grid; gap: 1.2rem; }
+  .cottage__images img { width: 100%; height: 260px; object-fit: cover; }
+
+  .grounds__grid { grid-template-columns: 1fr 1fr; }
+  .grounds__images { display: grid; gap: 1.2rem; }
+  .grounds__images img { width: 100%; height: 280px; object-fit: cover; }
+  .grounds__list { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem 2rem; }
+  .grounds__list li { position: relative; padding-left: 1.5em; font-size: 0.92rem; color: var(--navy-soft); }
+  .grounds__list li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 7px; height: 7px; border: 1px solid var(--gold); transform: rotate(45deg); }
+
+  .games-room { margin-top: 3.5rem; }
+  .games-room img { width: 100%; height: 380px; object-fit: cover; }
+
+  @media (max-width: 900px) {
+    .feature-grid { grid-template-columns: repeat(2, 1fr); }
+    .cottage__grid, .grounds__grid { grid-template-columns: 1fr; }
+    .grounds__grid .grounds__images { order: 2; }
+  }
+</style>
