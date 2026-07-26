@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import AvailabilityModal from '../components/AvailabilityModal.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -75,5 +76,6 @@ const imageURL = new URL(image, Astro.site);
       <slot />
     </main>
     <Footer />
+    <AvailabilityModal />
   </body>
 </html>
