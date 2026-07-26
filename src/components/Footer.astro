@@ -1,5 +1,9 @@
 ---
 import Heptagon from './Heptagon.astro';
+
+const ISLAND_VILLAS_URL = 'https://www.island-villas.com/branches/barbados#/';
+const PHONE_DISPLAY = '+1 (246) 422-3333';
+const PHONE_TEL = 'tel:+12464223333';
 ---
 <footer class="site-footer">
   <Heptagon size={340} stroke="rgba(175,201,196,0.15)" class="footer-motif" />
@@ -10,8 +14,8 @@ import Heptagon from './Heptagon.astro';
     </div>
     <div class="footer-col">
       <p class="footer-label">Enquiries</p>
-      <a href="mailto:stay@carltonridgevilla.com">stay@carltonridgevilla.com</a>
-      <a href="https://wa.me/12460000000">WhatsApp +1 246 000 0000</a>
+      <a href={ISLAND_VILLAS_URL} target="_blank" rel="noreferrer">Enquire via Island Villas</a>
+      <a href={PHONE_TEL}>Call {PHONE_DISPLAY}</a>
     </div>
     <div class="footer-col">
       <p class="footer-label">Explore</p>
