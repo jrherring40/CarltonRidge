@@ -1,32 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import EnquiryForm from '../components/EnquiryForm.jsx';
+
+const ISLAND_VILLAS_URL = 'https://www.island-villas.com/branches/barbados#/';
+const PHONE_DISPLAY = '+1 (246) 422-3333';
+const PHONE_TEL = 'tel:+12464223333';
 ---
 <BaseLayout title="Enquire" description="Check availability and enquire about staying at Carlton Ridge, Barbados.">
   <section class="page-hero">
     <div class="wrap page-hero__content">
       <p class="eyebrow">Get In Touch</p>
       <h1>Enquire</h1>
-      <p>Tell us your dates and party size, and we’ll come back to you directly &mdash; no booking platform, no middleman.</p>
+      <p>Villa rentals at Carlton Ridge are managed by Island Villas &mdash; check availability and enquire through their team below.</p>
     </div>
   </section>
 
   <section class="section section-sand enquire">
     <div class="wrap enquire__grid">
       <div class="enquire__form">
-        <EnquiryForm client:load />
+        <div class="managed-by">
+          <p class="eyebrow">Bookings &amp; Availability</p>
+          <h2>Managed by Island Villas</h2>
+          <div class="divider"></div>
+          <p>Villa rentals are managed by Island Villas. Enquire directly with their Barbados team for availability, rates and booking.</p>
+          <div class="managed-by__actions">
+            <a href={ISLAND_VILLAS_URL} class="btn btn-gold" target="_blank" rel="noreferrer">Enquire via Island Villas</a>
+            <a href={PHONE_TEL} class="btn btn-outline-dark">Call {PHONE_DISPLAY}</a>
+          </div>
+        </div>
       </div>
       <aside class="enquire__aside">
-        <p class="eyebrow">Direct Contact</p>
-        <h3>Prefer to reach us directly?</h3>
+        <p class="eyebrow">Address</p>
+        <h3>Carlton Ridge</h3>
         <div class="divider"></div>
-        <p><a href="mailto:stay@carltonridgevilla.com">stay@carltonridgevilla.com</a></p>
-        <p><a href="https://wa.me/12460000000">WhatsApp +1 246 000 0000</a></p>
-        <p class="enquire__note">Rates vary by season and party size &mdash; send your dates and we’ll reply with availability and pricing.</p>
-        <div class="enquire__addr">
-          <p class="eyebrow">Address</p>
-          <p>Carlton View Estate, Holetown<br />St. James, Barbados, West Indies</p>
-        </div>
+        <p>Carlton View Estate, Holetown<br />St. James, Barbados, West Indies</p>
       </aside>
     </div>
   </section>
@@ -37,14 +43,17 @@ import EnquiryForm from '../components/EnquiryForm.jsx';
   .page-hero__content p { color: var(--duck-egg-pale); margin-top: 0.6rem; max-width: 560px; }
 
   .enquire__grid { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 4rem; align-items: start; }
+  .managed-by {
+    background: var(--duck-egg-pale);
+    padding: 2.6rem;
+  }
+  .managed-by p { color: var(--navy-soft); }
+  .managed-by__actions { display: flex; gap: 1rem; margin-top: 1.6rem; flex-wrap: wrap; }
   .enquire__aside {
     background: var(--duck-egg-pale);
     padding: 2.4rem;
   }
   .enquire__aside p { color: var(--navy-soft); }
-  .enquire__aside a { color: var(--navy); font-weight: 500; }
-  .enquire__note { font-size: 0.88rem; margin-top: 1rem; }
-  .enquire__addr { margin-top: 2rem; padding-top: 1.6rem; border-top: 1px solid var(--duck-egg-dark); }
 
   @media (max-width: 900px) {
     .enquire__grid { grid-template-columns: 1fr; }
