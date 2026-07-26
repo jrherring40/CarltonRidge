@@ -21,7 +21,11 @@ const current = Astro.url.pathname;
       <ul class="nav__list" id="navList">
         {links.map(l => (
           <li>
-            <a href={l.href} class={current === l.href ? 'is-active' : ''}>{l.label}</a>
+            <a
+              href={l.href}
+              class={current === l.href ? 'is-active' : ''}
+              data-open-availability={l.href === '/enquire' ? true : undefined}
+            >{l.label}</a>
           </li>
         ))}
       </ul>

@@ -1,7 +1,7 @@
 ---
 import Heptagon from './Heptagon.astro';
 
-const ISLAND_VILLAS_URL = 'https://www.island-villas.com/branches/barbados#/';
+const AVAILABILITY_URL = 'https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE#/availability';
 const PHONE_DISPLAY = '+1 (246) 422-3333';
 const PHONE_TEL = 'tel:+12464223333';
 ---
@@ -14,7 +14,7 @@ const PHONE_TEL = 'tel:+12464223333';
     </div>
     <div class="footer-col">
       <p class="footer-label">Enquiries</p>
-      <a href={ISLAND_VILLAS_URL} target="_blank" rel="noreferrer">Enquire via Island Villas</a>
+      <a href={AVAILABILITY_URL} target="_blank" rel="noreferrer" data-open-availability>Enquire via Island Villas</a>
       <a href={PHONE_TEL}>Call {PHONE_DISPLAY}</a>
     </div>
     <div class="footer-col">
@@ -22,7 +22,7 @@ const PHONE_TEL = 'tel:+12464223333';
       <a href="/the-villa">The Villa</a>
       <a href="/gallery">Gallery</a>
       <a href="/location">Location</a>
-      <a href="/enquire">Enquire</a>
+      <a href="/enquire" data-open-availability>Enquire</a>
     </div>
   </div>
   <div class="wrap footer-bottom">
