@@ -1,0 +1,82 @@
+---
+const AVAILABILITY_URL = 'https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE#/availability';
+---
+<div class="availability-modal" id="availabilityModal" aria-hidden="true">
+  <div class="availability-modal__backdrop" id="availabilityModalBackdrop"></div>
+  <div class="availability-modal__panel" role="dialog" aria-modal="true" aria-labelledby="availabilityModalTitle">
+    <button class="availability-modal__close" id="availabilityModalClose" aria-label="Close">&times;</button>
+    <p class="eyebrow">Bookings &amp; Availability</p>
+    <h3 id="availabilityModalTitle">Check Availability</h3>
+    <p>Villa rentals are managed by Island Villas. Check live availability and enquire directly with their Barbados team.</p>
+    <a href={AVAILABILITY_URL} class="btn btn-gold" target="_blank" rel="noreferrer">Check Availability via Island Villas</a>
+  </div>
+</div>
+
+<style>
+  .availability-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+  .availability-modal.is-open { display: flex; }
+  .availability-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(22, 38, 58, 0.75);
+  }
+  .availability-modal__panel {
+    position: relative;
+    background: var(--white);
+    max-width: 420px;
+    width: 100%;
+    padding: 2.6rem 2.2rem;
+    text-align: center;
+  }
+  .availability-modal__panel p { color: var(--navy-soft); }
+  .availability-modal__panel .btn { margin-top: 0.6rem; }
+  .availability-modal__close {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.9rem;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--navy-soft);
+  }
+</style>
+
+<script>
+  function initAvailabilityModal() {
+    const modal = document.getElementById('availabilityModal');
+    const backdrop = document.getElementById('availabilityModalBackdrop');
+    const closeBtn = document.getElementById('availabilityModalClose');
+    if (!modal) return;
+
+    function openModal(e: Event) {
+      e.preventDefault();
+      modal!.classList.add('is-open');
+      modal!.setAttribute('aria-hidden', 'false');
+    }
+    function closeModal() {
+      modal!.classList.remove('is-open');
+      modal!.setAttribute('aria-hidden', 'true');
+    }
+
+    document.querySelectorAll('[data-open-availability]').forEach((el) => {
+      el.addEventListener('click', openModal);
+    });
+    backdrop?.addEventListener('click', closeModal);
+    closeBtn?.addEventListener('click', closeModal);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal!.classList.contains('is-open')) closeModal();
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initAvailabilityModal);
+</script>
