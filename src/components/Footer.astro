@@ -6,7 +6,9 @@ const PHONE_DISPLAY = '+1 (246) 422-3333';
 const PHONE_TEL = 'tel:+12464223333';
 
 const buildSha = (process.env.CF_PAGES_COMMIT_SHA || 'dev').slice(0, 7);
-const buildTime = new Date().toISOString().replace('T', ' ').slice(0, 16) + ' UTC';
+const now = new Date();
+const pad = (n: number) => String(n).padStart(2, '0');
+const buildTime = `${pad(now.getUTCDate())}/${pad(now.getUTCMonth() + 1)}/${now.getUTCFullYear()} ${pad(now.getUTCHours())}:${pad(now.getUTCMinutes())} UTC`;
 ---
 <footer class="site-footer">
   <Heptagon size={340} stroke="rgba(175,201,196,0.15)" class="footer-motif" />
