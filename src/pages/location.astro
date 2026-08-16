@@ -2,10 +2,31 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const nearby = [
-  { name: 'Holetown', detail: 'The West Coast\u2019s historic centre \u2014 boutiques, restaurants and the settlement where the English first landed in Barbados.' },
-  { name: 'Speightstown', detail: 'A working fishing town turned quietly fashionable, a short drive up the coast.' },
-  { name: 'The Beach', detail: 'Near-beach access to the calm, reef-protected water the West Coast is known for.' },
-  { name: 'Golf', detail: 'Within easy reach of the island\u2019s West Coast courses, including Royal Westmoreland and Apes Hill.' },
+  { name: 'Holetown', detail: 'Barbados\u2019s first English settlement, now the West Coast\u2019s most polished address \u2014 boutique shopping at Limegrove, waterfront dining, and the Holetown Monument marking where it all began in 1627.', href: 'https://www.visitbarbados.org/holetown', linkText: 'Explore Holetown' },
+  { name: 'Speightstown', detail: 'A working fishing port turned quiet favourite, its colonial \u201cLittle Bristol\u201d architecture giving way to a jetty, an esplanade, and some of the West Coast\u2019s least crowded beaches.', href: 'https://www.visitbarbados.org/speightstownn', linkText: 'Explore Speightstown' },
+  { name: 'The Beach', detail: 'Direct access to the calm, reef-sheltered water the Platinum Coast is famous for \u2014 sea turtles feeding just offshore, and some of the island\u2019s best-loved stretches of sand only minutes away.', href: 'https://barbados.org/bcwest.htm', linkText: 'Platinum Coast beaches' },
+  { name: 'Golf', detail: 'Four championship courses within easy reach, from Royal Westmoreland\u2019s Robert Trent Jones Jr. design to Apes Hill\u2019s dramatic ridge-line fairways above the sea.', href: 'https://www.visitbarbados.org/royal-westmoreland-golf-club', linkText: 'Royal Westmoreland Golf Club' },
+];
+
+const fineDining = [
+  { name: 'Lone Star', detail: 'A Platinum Coast institution on the beach at Mount Standfast \u2014 European and Caribbean flavours, a buzzy see-and-be-seen crowd, and Sunday lunch that\u2019s a local ritual.', href: 'https://thelonestar.com/' },
+  { name: 'The Cliff', detail: 'Barbados\u2019s original fine-dining landmark, its torch-lit terraces built into the rock face above the sea. Now under Michelin-starred chef Matt Worswick.', href: 'https://www.thecliffbarbados.com/' },
+  { name: 'The Cliff Beach House', detail: 'The Cliff\u2019s easier-going sister on the sand at Derricks \u2014 all-day dining, wood-fired pizza and sunset sessions in place of white tablecloths.', href: 'https://www.thecliffbeachhouse.com/' },
+  { name: 'Baya', detail: 'Peruvian-fusion cooking on a cliffside beachfront just north of Speightstown, with ceviche, an open charcoal grill and a strong tequila list.', href: 'https://baiabarbados.com/' },
+  { name: 'The Fishpot', detail: 'Fresh seafood inside a 17th-century fort on the northwest coast, family-run for over twenty years with an unbeatable view over the bay.', href: 'https://www.fishpotbarbados.com/' },
+  { name: 'Derri\u00e8re', detail: 'An authentic French brasserie tucked into Limegrove \u2014 steak frites, moules mariniere and a proper Parisian wine list, from breakfast through to late.', href: 'https://derriererestaurant.com/' },
+  { name: 'Fusion', detail: 'Penthouse dining atop Limegrove with a retractable roof and sweeping West Coast views \u2014 sophisticated, international, and best after dark.', href: 'https://www.fusionrooftop.com/' },
+  { name: 'West 101', detail: 'Gourmet island cooking by day from Chef Michael Hinds, turning into one of Holetown\u2019s liveliest bars by night, right in Limegrove.', href: 'https://www.101westbarbados.com/' },
+];
+
+const beachAndCasual = [
+  { name: 'Sea-Shed', detail: 'A laid-back beach day spot on Mullins Bay \u2014 loungers and cocktails by day, live music and DJs as the evening takes over.', href: 'https://www.seashedbarbados.com/' },
+  { name: 'La Cabane', detail: 'Barefoot beach dining on Batts Rock, all swings and hand-painted signs \u2014 Mediterranean-Bajan food from the team behind Derri\u00e8re.', href: 'https://www.lacabanebarbados.com/' },
+  { name: 'Local & Co', detail: 'Farm-to-table dining, a market and a rum bar inside a lovingly restored 18th-century warehouse on the beach in Speightstown \u2014 beautifully done and true to its word.', href: 'https://www.barbadosbarbados.com/dining/local-co/' },
+  { name: 'Sand Street Bistro', detail: 'A relaxed beachfront bistro in the heart of Speightstown, with sunset views across the road from the sand and a well-loved happy hour.', href: 'https://www.sandstreetbistro.com/' },
+  { name: 'Juma\u2019s', detail: 'Family-friendly, ocean-front dining on Alleynes Bay, two doors up from Lone Star \u2014 a Platinum Coast favourite for sunset dinners.', href: 'https://jumasrestaurant.com/' },
+  { name: 'Juju\u2019s', detail: 'Toes-in-the-sand simplicity at Mount Standfast \u2014 fresh catch, cold Banks beer and a straightforward menu right on one of the West Coast\u2019s best beaches.', href: 'https://www.tripadvisor.com/Restaurant_Review-g11847553-d4738692-Reviews-Ju_Ju_s_Beach_Bar-Mount_Standfast_Saint_James_Parish_Barbados.html' },
+  { name: 'Bombas', detail: 'Farm-to-table, sea-to-table dining right on Mullins Bay \u2014 fresh daily catch curated by owner Wayne, with a warm, colourful, laid-back setting.', href: 'https://www.bombasbarbados.com/' },
 ];
 ---
 <BaseLayout title="Location" description="Carlton Ridge sits in Carlton View Estate on Barbados's West Coast, near Holetown and Speightstown.">
@@ -32,8 +53,44 @@ const nearby = [
         <div class="nearby-card">
           <h3>{n.name}</h3>
           <p>{n.detail}</p>
+          <a href={n.href} class="nearby-card__link" target="_blank" rel="noopener noreferrer">{n.linkText}</a>
         </div>
       ))}
+    </div>
+  </section>
+
+  <section class="section-navy dining-section">
+    <div class="wrap intro">
+      <p class="eyebrow eyebrow--light">Where To Eat</p>
+      <h2 class="h2--light">Our Favourite Restaurants</h2>
+      <div class="divider divider--light"></div>
+      <p class="lede lede--light">A short list of West Coast favourites, from torch-lit fine dining to toes-in-the-sand beach bars &mdash; all within easy reach of Carlton Ridge.</p>
+    </div>
+
+    <div class="wrap dining-group">
+      <h3 class="dining-group__title">Fine Dining</h3>
+      <div class="dining-grid">
+        {fineDining.map(r => (
+          <div class="dining-card">
+            <h4>{r.name}</h4>
+            <p>{r.detail}</p>
+            <a href={r.href} class="dining-card__link" target="_blank" rel="noopener noreferrer">Visit website</a>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="wrap dining-group">
+      <h3 class="dining-group__title">Beach Bars &amp; Casual</h3>
+      <div class="dining-grid">
+        {beachAndCasual.map(r => (
+          <div class="dining-card">
+            <h4>{r.name}</h4>
+            <p>{r.detail}</p>
+            <a href={r.href} class="dining-card__link" target="_blank" rel="noopener noreferrer">Visit website</a>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -74,9 +131,26 @@ const nearby = [
   .lede { max-width: 700px; color: var(--navy-soft); font-size: 1.05rem; }
 
   .nearby-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; margin-top: 3rem; }
-  .nearby-card { padding: 1.8rem; background: var(--duck-egg-pale); }
+  .nearby-card { padding: 1.8rem; background: var(--duck-egg-pale); display: flex; flex-direction: column; }
   .nearby-card h3 { font-size: 1.2rem; }
-  .nearby-card p { font-size: 0.88rem; color: var(--navy-soft); margin: 0; }
+  .nearby-card p { font-size: 0.88rem; color: var(--navy-soft); margin: 0; flex-grow: 1; }
+  .nearby-card__link { display: inline-block; margin-top: 1rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; width: fit-content; }
+  .nearby-card__link:hover { opacity: 0.7; }
+
+  .dining-section { padding: 5rem 0; }
+  .h2--light { color: var(--white); }
+  .divider--light { background: var(--duck-egg); }
+  .lede--light { color: var(--duck-egg-pale); }
+
+  .dining-group { margin-top: 3rem; }
+  .dining-group__title { color: var(--white); font-size: 1.3rem; margin-bottom: 1.4rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+
+  .dining-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
+  .dining-card { padding: 1.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; }
+  .dining-card h4 { font-size: 1.05rem; color: var(--white); margin: 0 0 0.5rem; }
+  .dining-card p { font-size: 0.85rem; color: var(--duck-egg-pale); margin: 0; flex-grow: 1; line-height: 1.5; }
+  .dining-card__link { display: inline-block; margin-top: 1rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--duck-egg); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; width: fit-content; }
+  .dining-card__link:hover { opacity: 0.75; }
 
   .map-section { padding: 5rem 0 3rem; }
   .map-section__inner { padding-bottom: 2.5rem; }
@@ -85,8 +159,10 @@ const nearby = [
 
   @media (max-width: 900px) {
     .nearby-grid { grid-template-columns: 1fr 1fr; }
+    .dining-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
     .nearby-grid { grid-template-columns: 1fr; }
+    .dining-grid { grid-template-columns: 1fr; }
   }
 </style>
