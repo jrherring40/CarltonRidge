@@ -2,8 +2,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const bedrooms = [
-  { title: 'Left Bedroom', img: '/images/gardenresidenceleftbedroom.png', copy: 'A calm, en-suite bedroom on the left side of the garden residence, finished to the same standard as the main house.' },
-  { title: 'Right Bedroom', img: '/images/gardenresidencerightbedroom.png', copy: 'A second en-suite bedroom on the opposite side of the residence, giving guests their own space and privacy.' },
+  { title: 'Garden Residence Suite One', img: '/images/gardenresidenceleftbedroom.png', copy: 'A bright, en-suite bedroom fitted with a full-size bed (UK King equivalent), a walk-in wardrobe and an in-room safe for valuables. Ceiling fans and air conditioning keep the room cool through the day, and the adjoining living area \u2014 with its own full kitchen and access out to the shared patio \u2014 means guests staying here can come and go entirely on their own schedule, right down to their own front door and parking.' },
+  { title: 'Garden Residence Suite Two', img: '/images/gardenresidencerightbedroom.png', copy: 'The second bedroom in the garden residence shares the same easy, independent footprint \u2014 en suite, air-conditioned, and furnished with a full-size bed (UK King equivalent), walk-in wardrobe and in-room safe. Tucked among Carlton Ridge\u2019s manicured gardens and flowering trees, it\u2019s a quiet, restful spot just off the cottage\u2019s shared living space, with the patio, pool, gazebo and wet bar only a short stroll away.' },
+];
+
+const sharedFeatures = [
+  'Private front door and dedicated parking area, separate from the main house',
+  'Two en-suite bedrooms, both air-conditioned',
+  'Full-size beds (UK King equivalent) in each room',
+  'Walk-in wardrobe and safe in each bedroom',
+  'Full kitchen with fridge freezer, oven, cooking hob, microwave and washing machine',
+  'Private open-plan living area',
+  'Shared patio, accessed via the common living room',
+  'Direct access to the gardens, pool deck, gazebo and wet bar',
+  "Finished to match the main house's standard throughout",
 ];
 ---
 <BaseLayout title="The Garden Residence" description="A private, self-contained two-bedroom garden residence at Carlton Ridge, with its own kitchen, living area and patio.">
@@ -20,11 +32,11 @@ const bedrooms = [
   <section class="section section-sand">
     <div class="wrap cottage__grid">
       <div class="cottage__text">
-        <p class="eyebrow">The Garden Residence</p>
+        <p class="eyebrow">Overview</p>
         <h2>A private self-contained garden residence</h2>
         <div class="divider"></div>
-        <p>Set apart from the main house, the garden residence has its own open-plan living area, full kitchen and private patio, with views of the pool &mdash; a genuinely independent second home within the estate. It suits grandparents who want their own space, older children who want a little distance, or friends travelling together who’d rather some privacy.</p>
-        <p>Like the main house, it’s fully air-conditioned and finished to the same standard throughout.</p>
+        <p>Set apart from the main house within the grounds of Carlton Ridge, the garden residence is a fully self-contained two-bedroom retreat with its own private front door, private parking area, open-plan living space, full kitchen and shared patio. The kitchen is properly equipped for extended stays, with a fridge freezer, oven, cooking hob, microwave and washing machine, so guests staying here can live entirely independently of the main house if they choose.</p>
+        <p>Finished to the same standard as the main villa and fully air-conditioned throughout, it offers a genuine home-within-a-home &mdash; ideal for grandparents seeking their own space, older children wanting a little independence, or a second couple who\u2019d rather not share a landing.</p>
       </div>
       <div class="cottage__images">
         <img src="/images/CottageLivingRoom.jpeg" alt="Garden residence living room at Carlton Ridge" />
@@ -47,6 +59,17 @@ const bedrooms = [
           <p>{b.copy}</p>
         </div>
       ))}
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="wrap">
+      <p class="eyebrow">At A Glance</p>
+      <h2>Shared Garden Residence Features</h2>
+      <div class="divider"></div>
+      <ul class="features-list">
+        {sharedFeatures.map(f => <li>{f}</li>)}
+      </ul>
     </div>
   </section>
 
@@ -77,8 +100,13 @@ const bedrooms = [
   .feature-card img { width: 100%; height: 320px; object-fit: cover; margin-bottom: 1rem; }
   .feature-card p { font-size: 0.9rem; color: var(--navy-soft); }
 
+  .features-list { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem 3rem; max-width: 900px; }
+  .features-list li { position: relative; padding-left: 1.6em; font-size: 0.95rem; color: var(--navy-soft); }
+  .features-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 8px; height: 8px; border: 1px solid var(--gold); transform: rotate(45deg); }
+
   @media (max-width: 900px) {
     .cottage__grid { grid-template-columns: 1fr; }
     .bedroom-grid { grid-template-columns: 1fr; }
+    .features-list { grid-template-columns: 1fr; }
   }
 </style>
