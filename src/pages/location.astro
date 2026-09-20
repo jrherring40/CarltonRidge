@@ -35,13 +35,13 @@ const recommended = [
 ];
 
 const itinerary = [
-  { day: 'Day One', title: 'Arrival', copy: 'Touch down and settle in. Ease into island time on the covered patio with a rum punch as the sun drops over the garden, or take a first dip in the pool before dinner in \u2014 the chef\u2019s kitchen is stocked and ready, so there\u2019s no need to leave the villa on day one.' },
-  { day: 'Day Two', title: 'Alleynes Bay', copy: 'A short drive to Alleynes Bay for a morning on the sand \u2014 calm, clear West Coast water, ideal for an easy swim before lunch back at the villa. Afternoon by the pool, sundowners at the wet bar.' },
-  { day: 'Day Three', title: 'Boat Trip & Snorkelling with Captain Dwayne', copy: 'A full day on the water with Captain Dwayne\u2019s cruises along the Platinum Coast \u2014 snorkelling with turtles and over a shipwreck, with rum punch on tap for the ride home. Pack a swimsuit and sun cream, and keep dinner back at the villa easy after a day in the sun.' },
-  { day: 'Day Four', title: 'Limegrove & The Lone Star', copy: 'Late start, then into Holetown for the afternoon \u2014 Limegrove Lifestyle Centre for shopping, a browse through the boutiques, maybe lunch out. In the evening, dinner at The Lone Star, the famed beachfront restaurant on the Platinum Coast, an easy walk or short drive from the villa.' },
+  { day: 'Day One', title: 'Arrival', copy: 'Touch down and settle in. Ease into island time on the covered patio with a rum punch as the sun drops over the garden, or take a first dip in the pool before dinner in \u2014 the chef\u2019s kitchen can be stocked and ready at your request, so there\u2019s no need to leave the villa on day one.' },
+  { day: 'Day Two', title: 'Alleynes Bay', copy: 'A short drive to Alleynes Bay for a morning on the sand \u2014 calm, clear West Coast water, ideal for an easy swim before lunch back at the villa. Afternoon by the pool, sundowners at the wet bar. Dinner at <a href="https://www.fishpotbarbados.com/" target="_blank" rel="noopener noreferrer">The Fishpot</a> is the perfect way to round off the day.' },
+  { day: 'Day Three', title: 'Boat Trip & Snorkelling with <a href="https://www.captaindwayne.com/" target="_blank" rel="noopener noreferrer">Captain Dwayne</a>', copy: 'A full day on the water with Captain Dwayne\u2019s cruises along the Platinum Coast \u2014 snorkelling with turtles and over a shipwreck, with rum punch on tap for the ride home. Pack a swimsuit and sun cream, and keep dinner back at the villa easy after a day in the sun.' },
+  { day: 'Day Four', title: '<a href="https://limegrove.com/" target="_blank" rel="noopener noreferrer">Limegrove</a> & <a href="https://thelonestar.com/the-restaurant/" target="_blank" rel="noopener noreferrer">The Lone Star</a>', copy: 'Late start, then into Holetown for the afternoon \u2014 <a href="https://limegrove.com/" target="_blank" rel="noopener noreferrer">Limegrove</a> Lifestyle Centre for shopping, a browse through the boutiques, maybe lunch out. In the evening, dinner at <a href="https://thelonestar.com/the-restaurant/" target="_blank" rel="noopener noreferrer">The Lone Star</a>, the famed beachfront restaurant on the Platinum Coast, an easy walk or short drive from the villa.' },
   { day: 'Day Five', title: 'Friday Night in Oistins', copy: 'No week in Barbados is complete without Friday night at Oistins \u2014 the fish fry, the music, the whole south coast turning out for grilled mahi-mahi and cold beer at communal tables. Loud, local, and one of the best nights on the island.' },
   { day: 'Day Six', title: "Harrison's Cave", copy: 'A change of pace inland: Harrison\u2019s Cave for the underground tram tour through Barbados\u2019s limestone caverns \u2014 cool, dramatic, and a good contrast to a week by the water. Back at the villa by afternoon for pool time and a quiet evening in.' },
-  { day: 'Day Seven', title: 'Sunday at Sea Shed or La Cabane', copy: 'Round out the week the way Barbados does \u2014 a long, easy Sunday at Sea Shed or La Cabane, beachfront dining with your toes in the sand and no particular plan for the afternoon. Dinner at The Fishpot on the way back, or takeaway on a final night on the patio at Carlton Ridge.' },
+  { day: 'Day Seven', title: 'Sunday at <a href="https://www.seashedbarbados.com/" target="_blank" rel="noopener noreferrer">Sea Shed</a> or <a href="https://www.lacabanebarbados.com/" target="_blank" rel="noopener noreferrer">La Cabane</a>', copy: 'Round out the week the way Barbados does \u2014 a long, easy Sunday at <a href="https://www.seashedbarbados.com/" target="_blank" rel="noopener noreferrer">Sea Shed</a> or <a href="https://www.lacabanebarbados.com/" target="_blank" rel="noopener noreferrer">La Cabane</a>, beachfront dining with your toes in the sand and no particular plan for the afternoon.' },
   { day: 'Day Eight', title: 'Departure', copy: 'Last swim, last coffee on the terrace, pack up and go \u2014 already planning the next visit.' },
 ];
 ---
@@ -156,8 +156,8 @@ const itinerary = [
         <div class="itinerary-item">
           <p class="itinerary-item__day">{d.day}</p>
           <div class="itinerary-item__body">
-            <h4>{d.title}</h4>
-            <p>{d.copy}</p>
+            <h4 set:html={d.title} />
+            <p set:html={d.copy} />
           </div>
         </div>
       ))}
@@ -225,6 +225,8 @@ const itinerary = [
   .itinerary-item__day { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold-light, var(--gold)); margin: 0; }
   .itinerary-item__body h4 { font-size: 1.05rem; margin: 0 0 0.5rem; }
   .itinerary-item__body p { font-size: 0.92rem; color: var(--navy-soft); margin: 0; line-height: 1.6; }
+  .itinerary-item__body a { color: var(--navy); text-decoration: underline; text-underline-offset: 2px; }
+  .itinerary-item__body a:hover { color: var(--gold); }
 
   @media (max-width: 900px) {
     .nearby-grid { grid-template-columns: 1fr 1fr; }
