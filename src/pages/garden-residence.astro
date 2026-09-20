@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const bedrooms = [
+  { title: 'Left Bedroom', img: '/images/gardenresidenceleftbedroom.png', copy: 'A calm, en-suite bedroom on the left side of the garden residence, finished to the same standard as the main house.' },
+  { title: 'Right Bedroom', img: '/images/gardenresidencerightbedroom.png', copy: 'A second en-suite bedroom on the opposite side of the residence, giving guests their own space and privacy.' },
+];
+---
+<BaseLayout title="The Garden Residence" description="A private, self-contained two-bedroom garden residence at Carlton Ridge, with its own kitchen, living area and patio.">
+  <section class="page-hero">
+    <img src="/images/gardenresidenceleftbedroom.png" alt="Bedroom in the garden residence at Carlton Ridge" class="page-hero__img" />
+    <div class="page-hero__scrim"></div>
+    <div class="wrap page-hero__content">
+      <p class="eyebrow eyebrow--light">The Property</p>
+      <h1>The Garden Residence</h1>
+      <p>A private, self-contained two-bedroom retreat within the estate.</p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="wrap cottage__grid">
+      <div class="cottage__text">
+        <p class="eyebrow">The Garden Residence</p>
+        <h2>A private self-contained garden residence</h2>
+        <div class="divider"></div>
+        <p>Set apart from the main house, the garden residence has its own open-plan living area, full kitchen and private patio, with views of the pool &mdash; a genuinely independent second home within the estate. It suits grandparents who want their own space, older children who want a little distance, or friends travelling together who’d rather some privacy.</p>
+        <p>Like the main house, it’s fully air-conditioned and finished to the same standard throughout.</p>
+      </div>
+      <div class="cottage__images">
+        <img src="/images/CottageLivingRoom.jpeg" alt="Garden residence living room at Carlton Ridge" />
+        <img src="/images/CottageTerrace.jpeg" alt="Garden residence private terrace at Carlton Ridge" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-duckegg">
+    <div class="wrap">
+      <p class="eyebrow">Inside</p>
+      <h2>Two bedrooms, each with their own view</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="wrap bedroom-grid">
+      {bedrooms.map(b => (
+        <div class="feature-card">
+          <img src={b.img} alt={b.title} />
+          <h3>{b.title}</h3>
+          <p>{b.copy}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="wrap cta-band__inner">
+      <h2>See every room in the full gallery</h2>
+      <a href="/gallery" class="btn btn-outline-dark">View Gallery</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { position: relative; height: 52vh; min-height: 380px; display: flex; align-items: flex-end; color: var(--white); }
+  .page-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .page-hero__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,38,58,0.45), rgba(22,38,58,0.8)); }
+  .page-hero__content { position: relative; padding-bottom: 3rem; max-width: 640px; }
+  .page-hero__content h1 { color: var(--white); }
+  .page-hero__content p { color: var(--duck-egg-pale); margin-top: 0.6rem; }
+  .eyebrow--light { color: var(--white); }
+  .eyebrow--light::before { background: var(--duck-egg); }
+
+  .cottage__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+  .cottage__text p { color: var(--navy-soft); }
+  .cottage__images { display: grid; gap: 1.2rem; }
+  .cottage__images img { width: 100%; height: 260px; object-fit: cover; }
+
+  .bedroom-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; margin-top: 3rem; }
+  .feature-card img { width: 100%; height: 320px; object-fit: cover; margin-bottom: 1rem; }
+  .feature-card p { font-size: 0.9rem; color: var(--navy-soft); }
+
+  @media (max-width: 900px) {
+    .cottage__grid { grid-template-columns: 1fr; }
+    .bedroom-grid { grid-template-columns: 1fr; }
+  }
+</style>

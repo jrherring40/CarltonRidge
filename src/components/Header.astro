@@ -2,6 +2,7 @@
 const links = [
   { href: '/', label: 'Home' },
   { href: '/the-villa', label: 'The Villa' },
+  { href: '/garden-residence', label: 'The Garden Residence' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/location', label: 'Location' },
   { href: '/enquire', label: 'Enquire' },
@@ -60,7 +61,7 @@ const current = Astro.url.pathname;
   }
   .nav__list {
     display: flex;
-    gap: 2.4rem;
+    gap: 2rem;
     list-style: none;
     margin: 0; padding: 0;
   }
@@ -72,6 +73,7 @@ const current = Astro.url.pathname;
     padding-bottom: 4px;
     border-bottom: 1px solid transparent;
     transition: border-color 0.3s ease, opacity 0.3s ease;
+    white-space: nowrap;
   }
   .nav__list a:hover, .nav__list a.is-active {
     border-color: var(--gold);
