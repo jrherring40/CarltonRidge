@@ -5,36 +5,80 @@ const ENQUIRE_URL = '/enquire';
 
 const faqs = [
   {
-    q: 'How do I check availability and book Carlton Ridge?',
-    a: 'Villa rentals are managed by Island Villas. You can check live availability and enquire directly with their Barbados team from our Enquire page, or call us directly.',
+    q: 'How many people can Carlton Ridge sleep?',
+    a: "The full six-bedroom villa sleeps up to 12 guests. The main house alone (four bedrooms) can be booked separately for up to 8 guests, if you don't need the full property.",
   },
   {
-    q: 'Can we book just the main house, or the whole property?',
-    a: 'Both. Carlton Ridge can be booked as the 4-bedroom main house (up to 8 guests) or as the full 6-bedroom property including the garden residence (up to 12 guests). See the rates table on our Enquire page for pricing for each option.',
+    q: "What's included in the villa?",
+    a: 'Carlton Ridge is offered fully furnished, with a chef\u2019s kitchen (double oven, ample counter space), air conditioning throughout, ceiling fans, a private pool with wet bar and gazebo, a games room with pool table, and full irrigation and manicured gardens. Personal and sentimental items are excluded. Bedrooms are all en suite; the two-bedroom garden residence has its own full kitchen, living area and shared patio.',
   },
   {
-    q: 'What is included in the nightly rate?',
-    a: 'Rates are quoted per night, plus a 10% Shared Economy Levy and a 2.5% Service Fee. Rates vary by season \u2014 see the full price table on our Enquire page.',
+    q: 'Is the garden residence separate from the main house?',
+    a: "Yes. It's a fully self-contained two-bedroom annex with its own front door, dedicated parking, kitchen, living space and shared patio (accessed via the common living room, not directly from the bedrooms). It's ideal for grandparents, older children, or a second family group who'd like their own space.",
   },
   {
-    q: 'Is the pool private?',
-    a: 'Yes. Carlton Ridge has its own private heptagonal pool with a sun deck, exclusively for the use of guests staying at the villa.',
+    q: 'What are the rates, and do they vary by season?',
+    a: 'Yes, rates are seasonal. As a guide, per night for the full six-bedroom villa: Christmas USD $2,500, Winter USD $1,700, Summer USD $1,200. The four-bedroom main house alone is also available at a lower nightly rate across the same seasons \u2014 see the full price table on our Enquire page. All rates are subject to a 10% Shared Economy Levy and a 2.5% Service Fee.',
   },
   {
-    q: 'Is the property air-conditioned?',
-    a: 'Yes, both the main house and the garden residence are fully air-conditioned throughout.',
+    q: 'How do I check availability or make a booking?',
+    a: 'Carlton Ridge is managed by Island Villas. You can check live availability and enquire directly through their listing, or call their Barbados team on +1 (246) 422-3333.',
   },
   {
-    q: 'What happens if there is a power outage?',
-    a: 'Carlton Ridge has a whole-property backup generator, so guests are covered in the event of an outage.',
+    q: 'What is the minimum stay?',
+    a: 'This is typically set per season by Island Villas, our managing agent \u2014 worth confirming directly at enquiry, especially around Christmas/New Year, when minimum-stay requirements are common at this rate point.',
   },
   {
-    q: 'Is the garden residence fully independent from the main house?',
-    a: 'Yes. The garden residence has its own private front door, dedicated parking, full kitchen and open-plan living area, so guests staying there can come and go entirely on their own schedule.',
+    q: 'What are check-in and check-out times?',
+    a: 'Please confirm these with Island Villas at the time of booking.',
   },
   {
-    q: 'What about check-in and check-out times, deposits, and other booking policies?',
-    a: 'These are set by Island Villas as part of the booking process. Get in touch via our Enquire page and their team will confirm the details for your dates.',
+    q: 'Is there a security deposit?',
+    a: "Deposit and cancellation terms are outlined by Island Villas at the point of enquiry or booking \u2014 get in touch and their team will confirm the details for your dates.",
+  },
+  {
+    q: 'Is staff or concierge service included?',
+    a: 'Concierge services are among the property\u2019s features. Island Villas also offers a dedicated five-star guest concierge service, which can typically be arranged for chefs, housekeeping, drivers and in-villa experiences \u2014 worth asking about at enquiry stage to confirm what\u2019s included versus available as an add-on.',
+  },
+  {
+    q: "What happens if there's a power or water outage?",
+    a: 'The property has a large backup generator capable of powering the whole house, plus two 1,000-gallon water tanks and a water softener, so guests are well covered during any weather disruption \u2014 common in the Caribbean during hurricane season.',
+  },
+  {
+    q: 'Is the villa suitable for families with children?',
+    a: "The layout \u2014 four bedrooms in the main house plus a separate two-bedroom garden residence \u2014 suits multigenerational or family groups well, giving older children or grandparents their own space. Specific child-safety features such as pool fencing, cots or high chairs aren't detailed here \u2014 worth checking directly with Island Villas if travelling with young children.",
+  },
+  {
+    q: 'Is the pool fenced or supervised?',
+    a: 'As with any private villa pool, there is no lifeguard on site. Please confirm fencing and safety measures directly with Island Villas if travelling with children or non-swimmers.',
+  },
+  {
+    q: 'Is Carlton Ridge close to the beach?',
+    a: 'Yes \u2014 the villa is near-beach on the West Coast, within easy reach of Holetown and Speightstown, and a short drive from calm swimming spots like Alleynes Bay.',
+  },
+  {
+    q: 'Is there parking on site?',
+    a: 'Yes. The garden residence has its own dedicated parking area, separate from the main house.',
+  },
+  {
+    q: 'Is Wi-Fi available?',
+    a: 'Wi-Fi isn\u2019t explicitly listed among the property\u2019s features, though a sound system and full security/alarm system are. Worth confirming Wi-Fi speed and availability directly with Island Villas.',
+  },
+  {
+    q: 'Are pets allowed?',
+    a: 'Please check directly with Island Villas.',
+  },
+  {
+    q: 'Is there air conditioning throughout?',
+    a: 'Yes \u2014 air conditioning is fitted not just in the bedrooms but also in the kitchen and living room of the main house, and throughout the garden residence.',
+  },
+  {
+    q: 'What security features does the property have?',
+    a: 'Electronic gates, an alarm system and a security system are all part of the property.',
+  },
+  {
+    q: 'How far is Carlton Ridge from the airport?',
+    a: 'The villa is in Carlton View Estate, Holetown, St. James, on the West Coast. Drive time from Grantley Adams International Airport is typically 35\u201345 minutes to this part of the island \u2014 worth confirming exactly with Island Villas.',
   },
   {
     q: "Don't see your question here?",
