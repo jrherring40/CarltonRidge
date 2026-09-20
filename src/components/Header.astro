@@ -6,6 +6,7 @@ const links = [
   { href: '/gallery', label: 'Gallery' },
   { href: '/location', label: 'Location' },
   { href: '/enquire', label: 'Enquire' },
+  { href: '/faq', label: 'FAQ' },
 ];
 const current = Astro.url.pathname;
 ---
@@ -61,14 +62,14 @@ const current = Astro.url.pathname;
   }
   .nav__list {
     display: flex;
-    gap: 2rem;
+    gap: 1.7rem;
     list-style: none;
     margin: 0; padding: 0;
   }
   .nav__list a {
     color: var(--white);
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     padding-bottom: 4px;
     border-bottom: 1px solid transparent;
@@ -87,7 +88,7 @@ const current = Astro.url.pathname;
     width: 24px; height: 1px; background: var(--white); display: block;
   }
 
-  @media (max-width: 860px) {
+  @media (max-width: 980px) {
     .nav__toggle { display: flex; }
     .nav__list {
       position: fixed;
