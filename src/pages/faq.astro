@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const ENQUIRE_URL = '/enquire';
+
+const faqs = [
+  {
+    q: 'How do I check availability and book Carlton Ridge?',
+    a: 'Villa rentals are managed by Island Villas. You can check live availability and enquire directly with their Barbados team from our Enquire page, or call us directly.',
+  },
+  {
+    q: 'Can we book just the main house, or the whole property?',
+    a: 'Both. Carlton Ridge can be booked as the 4-bedroom main house (up to 8 guests) or as the full 6-bedroom property including the garden residence (up to 12 guests). See the rates table on our Enquire page for pricing for each option.',
+  },
+  {
+    q: 'What is included in the nightly rate?',
+    a: 'Rates are quoted per night, plus a 10% Shared Economy Levy and a 2.5% Service Fee. Rates vary by season \u2014 see the full price table on our Enquire page.',
+  },
+  {
+    q: 'Is the pool private?',
+    a: 'Yes. Carlton Ridge has its own private heptagonal pool with a sun deck, exclusively for the use of guests staying at the villa.',
+  },
+  {
+    q: 'Is the property air-conditioned?',
+    a: 'Yes, both the main house and the garden residence are fully air-conditioned throughout.',
+  },
+  {
+    q: 'What happens if there is a power outage?',
+    a: 'Carlton Ridge has a whole-property backup generator, so guests are covered in the event of an outage.',
+  },
+  {
+    q: 'Is the garden residence fully independent from the main house?',
+    a: 'Yes. The garden residence has its own private front door, dedicated parking, full kitchen and open-plan living area, so guests staying there can come and go entirely on their own schedule.',
+  },
+  {
+    q: 'What about check-in and check-out times, deposits, and other booking policies?',
+    a: 'These are set by Island Villas as part of the booking process. Get in touch via our Enquire page and their team will confirm the details for your dates.',
+  },
+  {
+    q: "Don't see your question here?",
+    a: "Get in touch via our Enquire page and we'll get back to you directly.",
+  },
+];
+---
+<BaseLayout title="FAQ" description="Frequently asked questions about staying at Carlton Ridge, Barbados.">
+  <section class="page-hero">
+    <div class="wrap page-hero__content">
+      <p class="eyebrow">Good To Know</p>
+      <h1>Frequently Asked Questions</h1>
+      <p>A few common questions about staying at Carlton Ridge.</p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="wrap faq-list">
+      {faqs.map(f => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="wrap cta-band__inner">
+      <h2>Still have a question?</h2>
+      <a href={ENQUIRE_URL} class="btn btn-outline-dark" data-open-availability>Enquire Now</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { background: var(--navy); padding: 6rem 0 3rem; color: var(--white); }
+  .page-hero__content h1 { color: var(--white); }
+  .page-hero__content p { color: var(--duck-egg-pale); margin-top: 0.6rem; }
+
+  .faq-list { max-width: 780px; display: flex; flex-direction: column; gap: 0.9rem; }
+  .faq-item { background: var(--duck-egg-pale); padding: 1.4rem 1.8rem; }
+  .faq-item summary { cursor: pointer; font-weight: 600; color: var(--navy); font-size: 1.02rem; list-style: none; position: relative; padding-right: 1.6rem; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 1.2rem;
+    color: var(--gold);
+  }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item p { color: var(--navy-soft); margin-top: 1rem; font-size: 0.95rem; line-height: 1.6; }
+</style>

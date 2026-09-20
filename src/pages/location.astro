@@ -28,6 +28,22 @@ const beachAndCasual = [
   { name: 'Juju\u2019s', detail: 'Toes-in-the-sand simplicity at Mount Standfast \u2014 fresh catch, cold Banks beer and a straightforward menu right on one of the West Coast\u2019s best beaches.', href: 'https://www.tripadvisor.com/Restaurant_Review-g11847553-d4738692-Reviews-Ju_Ju_s_Beach_Bar-Mount_Standfast_Saint_James_Parish_Barbados.html' },
   { name: 'Bombas', detail: 'Farm-to-table, sea-to-table dining right on Mullins Bay \u2014 fresh daily catch curated by owner Wayne, with a warm, colourful, laid-back setting.', href: 'https://www.bombasbarbados.com/' },
 ];
+
+const recommended = [
+  { name: 'Captain Dwayne', detail: 'Boat trips and snorkelling cruises along the Platinum Coast \u2014 swim with turtles, sail out over a shipwreck, and enjoy rum punch on the way home.', href: 'https://www.captaindwayne.com/', linkText: 'Visit Captain Dwayne' },
+  { name: 'Favourite Taxi: Jamal', detail: 'Our go-to driver for airport transfers and getting around the island, with Estilo Chauffeuring.', href: 'https://estilochauffeuring.com/', linkText: 'Visit Estilo Chauffeuring', phone: '+1 246 823 2016' },
+];
+
+const itinerary = [
+  { day: 'Day One', title: 'Arrival', copy: 'Touch down and settle in. Ease into island time on the covered patio with a rum punch as the sun drops over the garden, or take a first dip in the pool before dinner in \u2014 the chef\u2019s kitchen is stocked and ready, so there\u2019s no need to leave the villa on day one.' },
+  { day: 'Day Two', title: 'Alleynes Bay', copy: 'A short drive to Alleynes Bay for a morning on the sand \u2014 calm, clear West Coast water, ideal for an easy swim before lunch back at the villa. Afternoon by the pool, sundowners at the wet bar.' },
+  { day: 'Day Three', title: 'Boat Trip & Snorkelling with Captain Dwayne', copy: 'A full day on the water with Captain Dwayne\u2019s cruises along the Platinum Coast \u2014 snorkelling with turtles and over a shipwreck, with rum punch on tap for the ride home. Pack a swimsuit and sun cream, and keep dinner back at the villa easy after a day in the sun.' },
+  { day: 'Day Four', title: 'Limegrove & The Lone Star', copy: 'Late start, then into Holetown for the afternoon \u2014 Limegrove Lifestyle Centre for shopping, a browse through the boutiques, maybe lunch out. In the evening, dinner at The Lone Star, the famed beachfront restaurant on the Platinum Coast, an easy walk or short drive from the villa.' },
+  { day: 'Day Five', title: 'Friday Night in Oistins', copy: 'No week in Barbados is complete without Friday night at Oistins \u2014 the fish fry, the music, the whole south coast turning out for grilled mahi-mahi and cold beer at communal tables. Loud, local, and one of the best nights on the island.' },
+  { day: 'Day Six', title: "Harrison's Cave", copy: 'A change of pace inland: Harrison\u2019s Cave for the underground tram tour through Barbados\u2019s limestone caverns \u2014 cool, dramatic, and a good contrast to a week by the water. Back at the villa by afternoon for pool time and a quiet evening in.' },
+  { day: 'Day Seven', title: 'Sunday at Sea Shed or La Cabane', copy: 'Round out the week the way Barbados does \u2014 a long, easy Sunday at Sea Shed or La Cabane, beachfront dining with your toes in the sand and no particular plan for the afternoon. Dinner at The Fishpot on the way back, or takeaway on a final night on the patio at Carlton Ridge.' },
+  { day: 'Day Eight', title: 'Departure', copy: 'Last swim, last coffee on the terrace, pack up and go \u2014 already planning the next visit.' },
+];
 ---
 <BaseLayout title="Location" description="Carlton Ridge sits in Carlton View Estate on Barbados's West Coast, near Holetown and Speightstown.">
   <section class="page-hero">
@@ -110,6 +126,44 @@ const beachAndCasual = [
     </div>
   </section>
 
+  <section class="section section-sand things-to-do">
+    <div class="wrap intro">
+      <p class="eyebrow">Things To Do</p>
+      <h2>Make The Most Of Your Stay</h2>
+      <div class="divider"></div>
+      <p class="lede">A couple of trusted local recommendations, and a suggested week to help shape your stay.</p>
+    </div>
+
+    <div class="wrap recommend-grid">
+      {recommended.map(r => (
+        <div class="nearby-card">
+          <h3>{r.name}</h3>
+          <p>{r.detail}</p>
+          {r.phone && <p class="nearby-card__phone">{r.phone}</p>}
+          <a href={r.href} class="nearby-card__link" target="_blank" rel="noopener noreferrer">{r.linkText}</a>
+        </div>
+      ))}
+    </div>
+
+    <div class="wrap itinerary-intro">
+      <p class="eyebrow">Suggested Itinerary</p>
+      <h3>A Week at Carlton Ridge</h3>
+      <p class="itinerary-intro__copy">A guest itinerary &mdash; the best of the West Coast, at your own pace.</p>
+    </div>
+
+    <div class="wrap itinerary-list">
+      {itinerary.map(d => (
+        <div class="itinerary-item">
+          <p class="itinerary-item__day">{d.day}</p>
+          <div class="itinerary-item__body">
+            <h4>{d.title}</h4>
+            <p>{d.copy}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <section class="section cta-band">
     <div class="wrap cta-band__inner">
       <h2>Plan your stay on the West Coast</h2>
@@ -134,6 +188,7 @@ const beachAndCasual = [
   .nearby-card { padding: 1.8rem; background: var(--duck-egg-pale); display: flex; flex-direction: column; }
   .nearby-card h3 { font-size: 1.2rem; }
   .nearby-card p { font-size: 0.88rem; color: var(--navy-soft); margin: 0; flex-grow: 1; }
+  .nearby-card__phone { font-weight: 600; margin-top: 0.5rem !important; flex-grow: 0 !important; }
   .nearby-card__link { display: inline-block; margin-top: 1rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; width: fit-content; }
   .nearby-card__link:hover { opacity: 0.7; }
 
@@ -157,9 +212,25 @@ const beachAndCasual = [
   .map-embed { width: 600px; max-width: 100%; height: 450px; margin: 0 auto; }
   .map-embed iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.15); }
 
+  .things-to-do { padding-bottom: 6rem; }
+  .recommend-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; margin-top: 3rem; max-width: 900px; }
+
+  .itinerary-intro { margin-top: 4.5rem; }
+  .itinerary-intro h3 { font-size: 1.5rem; margin-top: 0.3rem; }
+  .itinerary-intro__copy { color: var(--navy-soft); margin-top: 0.4rem; }
+
+  .itinerary-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.4rem; }
+  .itinerary-item { display: grid; grid-template-columns: 140px 1fr; gap: 1.6rem; padding-bottom: 1.4rem; border-bottom: 1px solid rgba(22,38,58,0.1); }
+  .itinerary-item:last-child { border-bottom: none; }
+  .itinerary-item__day { font-family: var(--font-display); font-size: 1.1rem; color: var(--gold-light, var(--gold)); margin: 0; }
+  .itinerary-item__body h4 { font-size: 1.05rem; margin: 0 0 0.5rem; }
+  .itinerary-item__body p { font-size: 0.92rem; color: var(--navy-soft); margin: 0; line-height: 1.6; }
+
   @media (max-width: 900px) {
     .nearby-grid { grid-template-columns: 1fr 1fr; }
     .dining-grid { grid-template-columns: 1fr 1fr; }
+    .recommend-grid { grid-template-columns: 1fr; }
+    .itinerary-item { grid-template-columns: 1fr; gap: 0.4rem; }
   }
   @media (max-width: 560px) {
     .nearby-grid { grid-template-columns: 1fr; }
