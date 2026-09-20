@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const bedrooms = [
+  { title: 'Garden Residence Suite One', img: '/images/gardenresidenceleftbedroom.png', copy: 'A bright, en-suite bedroom fitted with a full-size bed (UK King equivalent), a walk-in wardrobe and an in-room safe for valuables. Ceiling fans and air conditioning keep the room cool through the day, and the adjoining living area \u2014 with its own full kitchen and access out to the shared patio \u2014 means guests staying here can come and go entirely on their own schedule, right down to their own front door and parking.' },
+  { title: 'Garden Residence Suite Two', img: '/images/gardenresidencerightbedroom.png', copy: 'The second bedroom in the garden residence shares the same easy, independent footprint \u2014 en suite, air-conditioned, and furnished with a full-size bed (UK King equivalent), walk-in wardrobe and in-room safe. Tucked among Carlton Ridge\u2019s manicured gardens and flowering trees, it\u2019s a quiet, restful spot just off the cottage\u2019s shared living space, with the patio, pool, gazebo and wet bar only a short stroll away.' },
+];
+
+const sharedFeatures = [
+  'Private front door and dedicated parking area, separate from the main house',
+  'Two en-suite bedrooms, both air-conditioned',
+  'Full-size beds (UK King equivalent) in each room',
+  'Walk-in wardrobe and safe in each bedroom',
+  'Full kitchen with fridge freezer, oven, cooking hob, microwave and washing machine',
+  'Private open-plan living area',
+  'Shared patio, accessed via the common living room',
+  'Direct access to the gardens, pool deck, gazebo and wet bar',
+  "Finished to match the main house's standard throughout",
+];
+---
+<BaseLayout title="The Garden Residence" description="A private, self-contained two-bedroom garden residence at Carlton Ridge, with its own kitchen, living area and patio.">
+  <section class="page-hero">
+    <img src="/images/gardenresidenceleftbedroom.png" alt="Bedroom in the garden residence at Carlton Ridge" class="page-hero__img" />
+    <div class="page-hero__scrim"></div>
+    <div class="wrap page-hero__content">
+      <p class="eyebrow eyebrow--light">The Property</p>
+      <h1>The Garden Residence</h1>
+      <p>A private, self-contained two-bedroom retreat within the estate.</p>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="wrap cottage__grid">
+      <div class="cottage__text">
+        <p class="eyebrow">Overview</p>
+        <h2>A private self-contained garden residence</h2>
+        <div class="divider"></div>
+        <p>Set apart from the main house within the grounds of Carlton Ridge, the garden residence is a fully self-contained two-bedroom retreat with its own private front door, private parking area, open-plan living space, full kitchen and shared patio. The kitchen is properly equipped for extended stays, with a fridge freezer, oven, cooking hob, microwave and washing machine, so guests staying here can live entirely independently of the main house if they choose.</p>
+        <p>Finished to the same standard as the main villa and fully air-conditioned throughout, it offers a genuine home-within-a-home &mdash; ideal for grandparents seeking their own space, older children wanting a little independence, or a second couple who\u2019d rather not share a landing.</p>
+      </div>
+      <div class="cottage__images">
+        <img src="/images/CottageLivingRoom.jpeg" alt="Garden residence living room at Carlton Ridge" />
+        <img src="/images/CottageTerrace.jpeg" alt="Garden residence private terrace at Carlton Ridge" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-duckegg">
+    <div class="wrap">
+      <p class="eyebrow">Inside</p>
+      <h2>Two bedrooms, each with their own view</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="wrap bedroom-grid">
+      {bedrooms.map(b => (
+        <div class="feature-card">
+          <img src={b.img} alt={b.title} />
+          <h3>{b.title}</h3>
+          <p>{b.copy}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="wrap">
+      <p class="eyebrow">At A Glance</p>
+      <h2>Shared Garden Residence Features</h2>
+      <div class="divider"></div>
+      <ul class="features-list">
+        {sharedFeatures.map(f => <li>{f}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section cta-band">
+    <div class="wrap cta-band__inner">
+      <h2>See every room in the full gallery</h2>
+      <a href="/gallery" class="btn btn-outline-dark">View Gallery</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { position: relative; height: 52vh; min-height: 380px; display: flex; align-items: flex-end; color: var(--white); }
+  .page-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .page-hero__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22,38,58,0.45), rgba(22,38,58,0.8)); }
+  .page-hero__content { position: relative; padding-bottom: 3rem; max-width: 640px; }
+  .page-hero__content h1 { color: var(--white); }
+  .page-hero__content p { color: var(--duck-egg-pale); margin-top: 0.6rem; }
+  .eyebrow--light { color: var(--white); }
+  .eyebrow--light::before { background: var(--duck-egg); }
+
+  .cottage__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
+  .cottage__text p { color: var(--navy-soft); }
+  .cottage__images { display: grid; gap: 1.2rem; }
+  .cottage__images img { width: 100%; height: 260px; object-fit: cover; }
+
+  .bedroom-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; margin-top: 3rem; }
+  .feature-card img { width: 100%; height: 320px; object-fit: cover; margin-bottom: 1rem; }
+  .feature-card p { font-size: 0.9rem; color: var(--navy-soft); }
+
+  .features-list { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem 3rem; max-width: 900px; }
+  .features-list li { position: relative; padding-left: 1.6em; font-size: 0.95rem; color: var(--navy-soft); }
+  .features-list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 8px; height: 8px; border: 1px solid var(--gold); transform: rotate(45deg); }
+
+  @media (max-width: 900px) {
+    .cottage__grid { grid-template-columns: 1fr; }
+    .bedroom-grid { grid-template-columns: 1fr; }
+    .features-list { grid-template-columns: 1fr; }
+  }
+</style>
