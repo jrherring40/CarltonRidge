@@ -15,92 +15,93 @@ const rates = [
   <section class="page-hero">
     <div class="wrap page-hero__content">
       <p class="eyebrow">Get In Touch</p>
-      <h1>Reserve</h1>
+      <h1>Rates &amp; Availability</h1>
       <p>Villa rentals at Carlton Ridge are managed by Island Villas &mdash; check availability and reserve through their team below.</p>
     </div>
   </section>
 
-  <section class="section section-sand rates">
-    <div class="wrap">
-      <p class="eyebrow">Price Table</p>
-      <h2>Rates</h2>
-      <div class="divider"></div>
-      <p class="lede">Rates per night, plus 10% Shared Economy Levy and 2.5% Service Fee.</p>
-      <div class="rates-table-wrap">
-        <table class="rates-table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">6 Bedrooms (1&ndash;12 guests)</th>
-              <th scope="col">4 Bedrooms (1&ndash;8 guests)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rates.map(r => (
-              <tr>
-                <th scope="row">{r.season}</th>
-                <td>{r.six}</td>
-                <td>{r.four}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-duckegg reserve">
+  <section class="section section-sand reserve">
     <div class="wrap reserve__grid">
-      <div class="reserve__form">
-        <div class="managed-by">
-          <p class="eyebrow">Bookings &amp; Availability</p>
-          <h2>Check Availability</h2>
-          <div class="divider"></div>
-          <p>Villa rentals are managed by Island Villas. Check live availability and reserve directly with their Barbados team.</p>
-          <div class="managed-by__actions">
-            <a href={ISLAND_VILLAS_URL} class="btn btn-gold" target="_blank" rel="noreferrer">Check Availability via Island Villas</a>
-            <a href={PHONE_TEL} class="btn btn-outline-dark">Call {PHONE_DISPLAY}</a>
-          </div>
+      <div class="rates">
+        <p class="eyebrow">Price Table</p>
+        <h2>Rates</h2>
+        <div class="divider"></div>
+        <p class="rates-intro">The Villa comfortably sleeps up to 12 guests across the six double bedroom suites. The Main House has four suites, and the Garden Residence has two suites. The Main House can be booked separately for up to 8 guests, if you don&rsquo;t need the full property.</p>
+        <div class="rates-table-wrap">
+          <table class="rates-table">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">6 Bedrooms (1&ndash;12 guests)</th>
+                <th scope="col">4 Bedrooms (1&ndash;8 guests)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rates.map(r => (
+                <tr>
+                  <th scope="row">{r.season}</th>
+                  <td>{r.six}</td>
+                  <td>{r.four}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="rates-note">Rates per night, plus 10% Shared Economy Levy and 2.5% Service Fee.</p>
+      </div>
+
+      <div class="managed-by">
+        <p class="eyebrow">Bookings &amp; Availability</p>
+        <h2>Check Availability</h2>
+        <div class="divider"></div>
+        <p>Villa rentals are managed by Island Villas. Check live availability and reserve directly with their Barbados team.</p>
+        <div class="managed-by__actions">
+          <a href={ISLAND_VILLAS_URL} class="btn btn-gold" target="_blank" rel="noreferrer">Check Availability via Island Villas</a>
+          <a href={PHONE_TEL} class="btn btn-outline-dark">Call {PHONE_DISPLAY}</a>
         </div>
       </div>
-      <aside class="reserve__aside">
-        <p class="eyebrow">Address</p>
-        <h3>Carlton Ridge</h3>
-        <div class="divider"></div>
-        <p>Carlton View Estate, Holetown<br />St. James, Barbados, West Indies</p>
-      </aside>
     </div>
   </section>
 </BaseLayout>
 
 <style>
   .page-hero { background: var(--navy); padding: 6rem 0 3.5rem; color: var(--white); }
+  .page-hero__content h1 { color: var(--white); margin-top: 0.6rem; }
   .page-hero__content p { color: var(--duck-egg-pale); margin-top: 0.6rem; max-width: 560px; }
 
-  .lede { max-width: 700px; color: var(--navy-soft); font-size: 1.05rem; }
+  /* Shared top inset so the Rates column lines up with the padded availability card */
+  .reserve { --card-pad: 2.6rem; }
+  /* Rates take the remaining space; the availability card sizes itself to its one-line heading */
+  .reserve__grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3.5rem; align-items: start; }
+  .rates { padding-top: var(--card-pad); }
 
-  .rates-table-wrap { margin-top: 2.5rem; overflow-x: auto; }
-  .rates-table { width: 100%; border-collapse: collapse; min-width: 480px; }
+  .rates-intro { color: var(--navy-soft); font-size: 1.02rem; line-height: 1.65; margin: 0; }
+  .rates-table-wrap { margin-top: 2rem; overflow-x: auto; }
+  .rates-table { width: 100%; border-collapse: collapse; min-width: 420px; }
   .rates-table th, .rates-table td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid rgba(22,38,58,0.12); }
   .rates-table thead th { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-soft); font-weight: 600; }
   .rates-table tbody th { font-weight: 600; color: var(--navy); }
   .rates-table tbody td { color: var(--navy-soft); }
   .rates-table tbody tr:hover { background: var(--duck-egg-pale); }
+  .rates-note { margin-top: 1.2rem; font-size: 0.9rem; color: var(--navy-soft); }
 
-  .reserve__grid { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 4rem; align-items: start; }
   .managed-by {
     background: var(--white);
-    padding: 2.6rem;
+    padding: var(--card-pad);
+    width: min-content;
+    min-width: 420px;
   }
+  .managed-by h2 { white-space: nowrap; }
   .managed-by p { color: var(--navy-soft); }
   .managed-by__actions { display: flex; gap: 1rem; margin-top: 1.6rem; flex-wrap: wrap; }
-  .reserve__aside {
-    background: var(--white);
-    padding: 2.4rem;
-  }
-  .reserve__aside p { color: var(--navy-soft); }
 
-  @media (max-width: 900px) {
-    .reserve__grid { grid-template-columns: 1fr; }
+  @media (max-width: 1100px) {
+    .reserve__grid { grid-template-columns: 1fr; gap: 3rem; }
+    .rates { padding-top: 0; }
+    .managed-by { width: auto; min-width: 0; }
+  }
+  @media (max-width: 560px) {
+    .reserve { --card-pad: 1.6rem; }
+    .managed-by h2 { font-size: 5vw; }
   }
 </style>
