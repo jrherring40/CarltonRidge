@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
 :root {
   /* Palette — drawn from Carlton Ridge's own setting: sea, stone, brass fittings */
@@ -13,8 +13,8 @@
   --white: #FFFFFF;
   --ink: #1B2A24;
 
-  --font-display: 'Cormorant Garamond', serif;
-  --font-body: 'Jost', sans-serif;
+  --font-display: 'Nunito Sans', sans-serif;
+  --font-body: 'Nunito Sans', sans-serif;
 
   --max-width: 1280px;
   --edge: clamp(1.5rem, 5vw, 5rem);
@@ -39,6 +39,8 @@ h1, h2, h3, h4 {
   color: var(--navy);
   margin: 0 0 0.5em;
   line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 h1 { font-size: clamp(2.6rem, 6vw, 5rem); font-weight: 500; }
