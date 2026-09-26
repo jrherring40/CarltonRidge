@@ -68,7 +68,10 @@ const rates = [
   .page-hero { background: var(--navy); padding: 6rem 0 3.5rem; color: var(--white); }
   .page-hero__content p { color: var(--duck-egg-pale); margin-top: 0.6rem; max-width: 560px; }
 
+  /* Shared top inset so the Rates column lines up with the padded availability card */
+  .reserve { --card-pad: 2.6rem; }
   .reserve__grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 3.5rem; align-items: start; }
+  .rates { padding-top: var(--card-pad); }
 
   .rates-intro { color: var(--navy-soft); font-size: 1.02rem; line-height: 1.65; margin: 0; }
   .rates-table-wrap { margin-top: 2rem; overflow-x: auto; }
@@ -82,12 +85,13 @@ const rates = [
 
   .managed-by {
     background: var(--white);
-    padding: 2.6rem;
+    padding: var(--card-pad);
   }
   .managed-by p { color: var(--navy-soft); }
   .managed-by__actions { display: flex; gap: 1rem; margin-top: 1.6rem; flex-wrap: wrap; }
 
   @media (max-width: 900px) {
     .reserve__grid { grid-template-columns: 1fr; gap: 3rem; }
+    .rates { padding-top: 0; }
   }
 </style>
