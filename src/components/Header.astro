@@ -1,4 +1,6 @@
 ---
+const BOOKING_URL = 'https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE#/';
+
 const links = [
   { href: '/', label: 'Home' },
   { href: '/the-villa', label: 'The Villa' },
@@ -16,18 +18,21 @@ const current = Astro.url.pathname;
       <span class="brand__name">Carlton Ridge</span>
       <span class="brand__sub">Holetown &middot; Barbados</span>
     </a>
-    <nav class="nav" aria-label="Primary">
-      <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navList">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav__list" id="navList">
-        {links.map(l => (
-          <li>
-            <a href={l.href} class={current === l.href ? 'is-active' : ''}>{l.label}</a>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div class="header-actions">
+      <nav class="nav" aria-label="Primary">
+        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navList">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav__list" id="navList">
+          {links.map(l => (
+            <li>
+              <a href={l.href} class={current === l.href ? 'is-active' : ''}>{l.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <a href={BOOKING_URL} class="btn btn-gold header-cta" target="_blank" rel="noreferrer">Reserve Now</a>
+    </div>
   </div>
 </header>
 
@@ -42,8 +47,9 @@ const current = Astro.url.pathname;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 2rem;
   }
-  .brand { display: flex; flex-direction: column; line-height: 1; color: var(--white); }
+  .brand { display: flex; flex-direction: column; line-height: 1; color: var(--white); flex-shrink: 0; }
   .brand__name {
     font-family: var(--font-display);
     font-size: 1.5rem;
@@ -55,6 +61,11 @@ const current = Astro.url.pathname;
     text-transform: uppercase;
     color: var(--duck-egg);
     margin-top: 0.35em;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
   .nav__list {
     display: flex;
@@ -84,7 +95,29 @@ const current = Astro.url.pathname;
     width: 24px; height: 1px; background: var(--white); display: block;
   }
 
+  /* Header CTA — the global .btn-gold hover goes navy, which vanishes on the navy header */
+  .header-cta {
+    padding: 0.75em 1.5em;
+    font-size: 0.74rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .header-cta:hover {
+    background: transparent;
+    border-color: var(--gold);
+    color: var(--gold-light);
+  }
+
+  /* Tighten the nav between tablet and wide desktop so everything fits on one line */
+  @media (min-width: 981px) and (max-width: 1240px) {
+    .header-actions { gap: 1.4rem; }
+    .nav__list { gap: 1.1rem; }
+    .nav__list a { font-size: 0.7rem; letter-spacing: 0.1em; }
+  }
+
   @media (max-width: 980px) {
+    .header-actions { gap: 1rem; }
+    .header-cta { order: -1; }
     .nav__toggle { display: flex; }
     .nav__list {
       position: fixed;
@@ -99,6 +132,11 @@ const current = Astro.url.pathname;
       transition: transform 0.4s ease;
     }
     .nav__list.is-open { transform: translateX(0); }
+  }
+
+  @media (max-width: 420px) {
+    .brand__name { font-size: 1.25rem; }
+    .header-cta { padding: 0.65em 1em; font-size: 0.66rem; letter-spacing: 0.1em; }
   }
 </style>
 
