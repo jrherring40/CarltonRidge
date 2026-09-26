@@ -1,106 +1,16 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-
-const ISLAND_VILLAS_URL = 'https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE#/availability';
-const PHONE_DISPLAY = '+1 (246) 422-3333';
-const PHONE_TEL = 'tel:+12464223333';
-
-const rates = [
-  { season: 'Christmas', six: 'USD $2,500', four: 'USD $1,667' },
-  { season: 'Winter', six: 'USD $1,700', four: 'USD $1,134' },
-  { season: 'Summer', six: 'USD $1,200', four: 'USD $800' },
-];
+const target = '/reserve';
 ---
-<BaseLayout title="Enquire" description="Rates and availability for staying at Carlton Ridge, Barbados.">
-  <section class="page-hero">
-    <div class="wrap page-hero__content">
-      <p class="eyebrow">Get In Touch</p>
-      <h1>Enquire</h1>
-      <p>Villa rentals at Carlton Ridge are managed by Island Villas &mdash; check availability and enquire through their team below.</p>
-    </div>
-  </section>
-
-  <section class="section section-sand rates">
-    <div class="wrap">
-      <p class="eyebrow">Price Table</p>
-      <h2>Rates</h2>
-      <div class="divider"></div>
-      <p class="lede">Rates per night, plus 10% Shared Economy Levy and 2.5% Service Fee.</p>
-      <div class="rates-table-wrap">
-        <table class="rates-table">
-          <thead>
-            <tr>
-              <th scope="col"></th>
-              <th scope="col">6 Bedrooms (1&ndash;12 guests)</th>
-              <th scope="col">4 Bedrooms (1&ndash;8 guests)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rates.map(r => (
-              <tr>
-                <th scope="row">{r.season}</th>
-                <td>{r.six}</td>
-                <td>{r.four}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-duckegg enquire">
-    <div class="wrap enquire__grid">
-      <div class="enquire__form">
-        <div class="managed-by">
-          <p class="eyebrow">Bookings &amp; Availability</p>
-          <h2>Check Availability</h2>
-          <div class="divider"></div>
-          <p>Villa rentals are managed by Island Villas. Check live availability and enquire directly with their Barbados team.</p>
-          <div class="managed-by__actions">
-            <a href={ISLAND_VILLAS_URL} class="btn btn-gold" target="_blank" rel="noreferrer">Check Availability via Island Villas</a>
-            <a href={PHONE_TEL} class="btn btn-outline-dark">Call {PHONE_DISPLAY}</a>
-          </div>
-        </div>
-      </div>
-      <aside class="enquire__aside">
-        <p class="eyebrow">Address</p>
-        <h3>Carlton Ridge</h3>
-        <div class="divider"></div>
-        <p>Carlton View Estate, Holetown<br />St. James, Barbados, West Indies</p>
-      </aside>
-    </div>
-  </section>
-</BaseLayout>
-
-<style>
-  .page-hero { background: var(--navy); padding: 6rem 0 3.5rem; color: var(--white); }
-  .page-hero__content p { color: var(--duck-egg-pale); margin-top: 0.6rem; max-width: 560px; }
-
-  .lede { max-width: 700px; color: var(--navy-soft); font-size: 1.05rem; }
-
-  .rates-table-wrap { margin-top: 2.5rem; overflow-x: auto; }
-  .rates-table { width: 100%; border-collapse: collapse; min-width: 480px; }
-  .rates-table th, .rates-table td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid rgba(22,38,58,0.12); }
-  .rates-table thead th { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-soft); font-weight: 600; }
-  .rates-table tbody th { font-weight: 600; color: var(--navy); }
-  .rates-table tbody td { color: var(--navy-soft); }
-  .rates-table tbody tr:hover { background: var(--duck-egg-pale); }
-
-  .enquire__grid { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 4rem; align-items: start; }
-  .managed-by {
-    background: var(--white);
-    padding: 2.6rem;
-  }
-  .managed-by p { color: var(--navy-soft); }
-  .managed-by__actions { display: flex; gap: 1rem; margin-top: 1.6rem; flex-wrap: wrap; }
-  .enquire__aside {
-    background: var(--white);
-    padding: 2.4rem;
-  }
-  .enquire__aside p { color: var(--navy-soft); }
-
-  @media (max-width: 900px) {
-    .enquire__grid { grid-template-columns: 1fr; }
-  }
-</style>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting to Reserve &middot; Carlton Ridge</title>
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <link rel="canonical" href="https://www.carltonridgevilla.com/reserve" />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body>
+    <p>This page has moved. Redirecting to <a href="/reserve">/reserve</a>&hellip;</p>
+  </body>
+</html>

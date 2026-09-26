@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const ENQUIRE_URL = '/enquire';
+const RESERVE_URL = '/reserve';
 
 const faqs = [
   {
@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: 'What are the rates, and do they vary by season?',
-    a: 'Yes, rates are seasonal. As a guide, per night for the full six-bedroom villa: Christmas USD $2,500, Winter USD $1,700, Summer USD $1,200. The four-bedroom main house alone is also available at a lower nightly rate across the same seasons \u2014 see the full price table on our Enquire page. All rates are subject to a 10% Shared Economy Levy and a 2.5% Service Fee.',
+    a: 'Yes, rates are seasonal. As a guide, per night for the full six-bedroom villa: Christmas USD $2,500, Winter USD $1,700, Summer USD $1,200. The four-bedroom main house alone is also available at a lower nightly rate across the same seasons \u2014 see the full price table on our Reserve page. All rates are subject to a 10% Shared Economy Levy and a 2.5% Service Fee.',
   },
   {
     q: 'How do I check availability or make a booking?',
@@ -82,7 +82,7 @@ const faqs = [
   },
   {
     q: "Don't see your question here?",
-    a: "Get in touch via our Enquire page and we'll get back to you directly.",
+    a: "Get in touch via our Reserve page and we'll get back to you directly.",
   },
 ];
 ---
@@ -109,7 +109,7 @@ const faqs = [
   <section class="section cta-band">
     <div class="wrap cta-band__inner">
       <h2>Still have a question?</h2>
-      <a href={ENQUIRE_URL} class="btn btn-outline-dark">Enquire Now</a>
+      <a href={RESERVE_URL} class="btn btn-outline-dark">Reserve Now</a>
     </div>
   </section>
 </BaseLayout>
