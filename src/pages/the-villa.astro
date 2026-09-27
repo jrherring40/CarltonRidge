@@ -4,8 +4,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const houseFeatures = [
   { title: 'The Kitchen', img: '/images/Kitchen.jpeg', copy: 'A double oven and a run of counter space built for real cooking, opening directly onto the covered dining patio so nothing gets cold, or lonely, on the way to the table.' },
   { title: 'The Living Room', img: '/images/LivingRoom.jpeg', copy: 'High ceilings and cross-breezes from ceiling fans throughout, with the living area folding out onto a covered terrace for indoor-outdoor evenings.' },
+  { title: 'Games room with pool table', img: '/images/PoolTable.jpeg', copy: 'A games room just off the terrace, with a full-size pool table and board games for slower evenings.' },
+];
+
+const mainBedrooms = [
   { title: 'Master Suite', img: '/images/mastersuite2.png', copy: 'Wake to garden and pool views, the main master suite opens directly onto a covered veranda. It has its own TV and seating area and a walk-in dressing room with make up table, making this the villa’s most private and spacious bedroom.' },
-  { title: 'Master Bath', img: '/images/MasterBathroom.jpeg', copy: 'A generous en-suite designed for unwinding, with his-and-hers vanities, a deep bath that converts to a steam room. After a day by the pool or exploring the island, it’s a lovely place to slow down and recharge with robes and slippers, local toiletries from <a href="https://stlucybotanists.com" target="_blank" rel="noopener noreferrer">St Lucy Botanists</a> included.' },
+  { title: 'Master Bathroom', img: '/images/MasterBathroom.jpeg', copy: 'A generous en-suite designed for unwinding, with his-and-hers vanities, a deep bath that converts to a steam room. After a day by the pool or exploring the island, it’s a lovely place to slow down and recharge with robes and slippers, local toiletries from <a href="https://stlucybotanists.com" target="_blank" rel="noopener noreferrer">St Lucy Botanists</a> included.' },
+];
+
+const otherBedrooms = [
+  { title: 'Poolside Suite', img: '/images/masterguestpool.png', copy: 'Bedroom with en-suite, built in wardrobes and direct access to the pool.' },
+  { title: 'Guest Suite Three', img: '/images/villaguestroom3.png', copy: 'Bedroom with en-suite, walk in wardrobe and outdoor patio.' },
+  { title: 'Guest Suite Four', img: '/images/blushpinkroom.png', copy: 'Bedroom with en-suite, walk in wardrobe and outdoor patio.' },
+];
+
+const gardenResidencePhotos = [
+  { title: 'Living Room', img: '/images/CottageLivingRoom.jpeg', copy: 'Self-contained living space with its own full kitchen.' },
+  { title: 'Patio', img: '/images/CottageTerrace.jpeg', copy: 'Patio, with the gardens leading to the pool.' },
+  { title: 'Garden Residence Suite One', img: '/images/gardenresidenceleftbedroom.png', copy: 'An air-conditioned en-suite bedroom with a full-size bed (UK king-equivalent) and walk-in wardrobe.' },
+  { title: 'Garden Residence Suite Two', img: '/images/gardenresidencerightbedroom.png', copy: 'A second en-suite bedroom, with the same independent comfort and garden setting.' },
 ];
 ---
 <BaseLayout title="The Villa" description="A room-by-room look at Carlton Ridge's main house and grounds.">
@@ -15,14 +32,21 @@ const houseFeatures = [
     <div class="wrap page-hero__content">
       <p class="eyebrow eyebrow--light">The Property</p>
       <h1>The Villa</h1>
-      <p>Six thousand square feet, arranged across a main house and a private garden residence.</p>
+      <p>Six bedrooms for up to 12 guests: four in the main house and two in a private Garden Residence.</p>
+    </div>
+  </section>
+
+  <section class="section section-duckegg at-a-glance">
+    <div class="wrap">
+      <p class="eyebrow">At A Glance</p>
+      <p class="at-a-glance__line">6 bedrooms &middot; 12 guests &middot; 4-bedroom main house &middot; 2-bedroom Garden Residence</p>
     </div>
   </section>
 
   <section class="section section-sand">
     <div class="wrap">
-      <p class="eyebrow">The Main House</p>
-      <h2>Four bedrooms, built around light and breeze</h2>
+      <p class="eyebrow">Living Spaces</p>
+      <h2>Living spaces built around light and breeze</h2>
       <div class="divider"></div>
       <p class="lede">The main house holds four en-suite bedrooms around a central living and dining space that opens fully to the garden. Nothing here is closed off &mdash; the kitchen sees the dining table, the living room sees the terrace, the terrace sees the pool.</p>
     </div>
@@ -37,18 +61,54 @@ const houseFeatures = [
     </div>
   </section>
 
-  <section class="section section-duckegg cottage-teaser">
-    <div class="wrap cottage-teaser__inner">
-      <div>
-        <p class="eyebrow">Also On The Estate</p>
-        <h2>The Garden Residence</h2>
-        <p class="cottage-teaser__copy">A private, self-contained two-bedroom retreat with its own kitchen, living area and patio.</p>
-      </div>
+  <section class="section section-duckegg">
+    <div class="wrap">
+      <p class="eyebrow">The Bedrooms</p>
+      <h2>Four bedrooms, each built for rest</h2>
+      <div class="divider"></div>
+      <p class="lede">Four en-suite bedrooms spread across the main house, each with its own character and views over the gardens or pool.</p>
+    </div>
+    <div class="wrap bedroom-grid bedroom-grid--two">
+      {mainBedrooms.map(b => (
+        <div class="feature-card">
+          <img src={b.img} alt={b.title} />
+          <h3>{b.title}</h3>
+          <p set:html={b.copy} />
+        </div>
+      ))}
+    </div>
+    <div class="wrap bedroom-grid bedroom-grid--three">
+      {otherBedrooms.map(b => (
+        <div class="feature-card">
+          <img src={b.img} alt={b.title} />
+          <h3>{b.title}</h3>
+          <p set:html={b.copy} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="section section-sand cottage-teaser">
+    <div class="wrap">
+      <p class="eyebrow">Also On The Estate</p>
+      <h2>The Garden Residence</h2>
+      <p class="cottage-teaser__copy">A private, self-contained two-bedroom retreat with its own entrance and parking&mdash;ideal for family or guests who want a little more independence.</p>
+    </div>
+    <div class="wrap cottage-teaser__grid">
+      {gardenResidencePhotos.map(p => (
+        <div class="cottage-teaser__photo">
+          <img src={p.img} alt={p.title} />
+          <h3>{p.title}</h3>
+          <p>{p.copy}</p>
+        </div>
+      ))}
+    </div>
+    <div class="wrap cottage-teaser__cta">
       <a href="/garden-residence" class="btn btn-outline-dark">Explore the Garden Residence</a>
     </div>
   </section>
 
-  <section class="section section-sand grounds">
+  <section class="section section-duckegg grounds">
     <div class="wrap grounds__grid">
       <div class="grounds__images">
         <img src="/images/Pool.png" alt="Heptagonal swimming pool at Carlton Ridge" />
@@ -58,7 +118,7 @@ const houseFeatures = [
         <p class="eyebrow">The Grounds</p>
         <h2>Gardens, pool &amp; a wet bar built for long afternoons</h2>
         <div class="divider"></div>
-        <p>The outdoor deck and pool sit within manicured gardens dense with flowering trees, framed by a gazebo and wet bar built for entertaining. A games room with pool table sits just off the terrace for slower evenings.</p>
+        <p>The outdoor deck and pool sit within manicured gardens dense with flowering trees, framed by a gazebo and wet bar built for entertaining.</p>
         <ul class="grounds__list">
           <li>Private heptagonal pool with sun deck</li>
           <li>Gazebo &amp; outdoor wet bar</li>
@@ -71,12 +131,9 @@ const houseFeatures = [
         </ul>
       </div>
     </div>
-    <div class="wrap games-room">
-      <img src="/images/PoolTable.jpeg" alt="Games room with pool table at Carlton Ridge" />
-    </div>
   </section>
 
-  <section class="section cta-band">
+  <section class="section section-duckegg cta-band">
     <div class="wrap cta-band__inner">
       <h2>See every room in the full gallery</h2>
       <a href="/gallery" class="btn btn-outline-dark">View Gallery</a>
@@ -96,12 +153,22 @@ const houseFeatures = [
 
   .lede { max-width: 680px; color: var(--navy-soft); font-size: 1.05rem; }
 
+  .at-a-glance { padding-top: 1.8rem; padding-bottom: 1.8rem; }
+  .at-a-glance__line { text-align: center; font-size: 1.05rem; color: var(--navy-soft); letter-spacing: 0.02em; }
+
   .feature-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; margin-top: 3rem; }
   .feature-card img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 1rem; }
   .feature-card p { font-size: 0.9rem; color: var(--navy-soft); }
 
-  .cottage-teaser__inner { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
+  .bedroom-grid { display: grid; gap: 1.6rem; margin-top: 3rem; }
+  .bedroom-grid--two { grid-template-columns: repeat(2, 1fr); }
+  .bedroom-grid--three { grid-template-columns: repeat(3, 1fr); margin-top: 1.6rem; }
+
   .cottage-teaser__copy { color: var(--navy-soft); margin-top: 0.4rem; max-width: 480px; }
+  .cottage-teaser__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; margin-top: 2.5rem; }
+  .cottage-teaser__photo img { width: 100%; height: 200px; object-fit: cover; margin-bottom: 0.8rem; }
+  .cottage-teaser__photo p { font-size: 0.9rem; color: var(--navy-soft); }
+  .cottage-teaser__cta { margin-top: 2.5rem; }
 
   .grounds__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; }
   .grounds__text p { color: var(--navy-soft); }
@@ -111,11 +178,10 @@ const houseFeatures = [
   .grounds__list li { position: relative; padding-left: 1.5em; font-size: 0.92rem; color: var(--navy-soft); }
   .grounds__list li::before { content: ''; position: absolute; left: 0; top: 0.5em; width: 7px; height: 7px; border: 1px solid var(--gold); transform: rotate(45deg); }
 
-  .games-room { margin-top: 3.5rem; }
-  .games-room img { width: 100%; height: 380px; object-fit: cover; }
-
   @media (max-width: 900px) {
     .feature-grid { grid-template-columns: repeat(2, 1fr); }
+    .bedroom-grid--two, .bedroom-grid--three { grid-template-columns: repeat(2, 1fr); }
+    .cottage-teaser__grid { grid-template-columns: repeat(2, 1fr); }
     .grounds__grid { grid-template-columns: 1fr; }
     .grounds__grid .grounds__images { order: 2; }
   }
