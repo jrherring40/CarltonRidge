@@ -20,7 +20,7 @@ const current = Astro.url.pathname;
     </a>
     <div class="header-actions">
       <nav class="nav" aria-label="Primary">
-        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navList">
+        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navList" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
         <ul class="nav__list" id="navList">
@@ -30,6 +30,7 @@ const current = Astro.url.pathname;
             </li>
           ))}
         </ul>
+        <div class="nav__backdrop" id="navBackdrop"></div>
       </nav>
       <a href={BOOKING_URL} class="btn btn-gold header-cta" target="_blank" rel="noreferrer">Reserve Now</a>
     </div>
@@ -93,7 +94,13 @@ const current = Astro.url.pathname;
   }
   .nav__toggle span {
     width: 24px; height: 1px; background: var(--white); display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
   }
+  /* Morph the hamburger into an X while the menu is open */
+  .nav__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .nav__backdrop { display: none; }
 
   /* Header CTA — the global .btn-gold hover goes navy, which vanishes on the navy header */
   .header-cta {
@@ -118,7 +125,19 @@ const current = Astro.url.pathname;
   @media (max-width: 980px) {
     .header-actions { gap: 1rem; }
     .header-cta { order: -1; }
-    .nav__toggle { display: flex; }
+    /* Keep the toggle above the slide-out panel so it can close the menu */
+    .nav__toggle { display: flex; position: relative; z-index: 2; }
+    .nav__backdrop {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+    .nav__backdrop.is-open { opacity: 1; pointer-events: auto; }
     .nav__list {
       position: fixed;
       inset: 0 0 0 30%;
@@ -130,6 +149,7 @@ const current = Astro.url.pathname;
       gap: 1.6rem;
       transform: translateX(100%);
       transition: transform 0.4s ease;
+      z-index: 1;
     }
     .nav__list.is-open { transform: translateX(0); }
   }
@@ -143,8 +163,19 @@ const current = Astro.url.pathname;
 <script>
   const toggle = document.getElementById('navToggle');
   const list = document.getElementById('navList');
-  toggle?.addEventListener('click', () => {
-    const open = list?.classList.toggle('is-open');
-    toggle.setAttribute('aria-expanded', String(!!open));
-  });
+  const backdrop = document.getElementById('navBackdrop');
+
+  const setOpen = (open: boolean) => {
+    list?.classList.toggle('is-open', open);
+    backdrop?.classList.toggle('is-open', open);
+    toggle?.setAttribute('aria-expanded', String(open));
+    toggle?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  };
+
+  toggle?.addEventListener('click', () => setOpen(!list?.classList.contains('is-open')));
+  backdrop?.addEventListener('click', () => setOpen(false));
+  list?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setOpen(false); });
+  window.matchMedia('(min-width: 981px)').addEventListener('change', e => { if (e.matches) setOpen(false); });
 </script>
