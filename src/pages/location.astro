@@ -4,17 +4,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const nearby = [
   { name: 'Holetown', detail: 'Barbados\u2019s first English settlement, now the West Coast\u2019s most polished address \u2014 boutique shopping at Limegrove, waterfront dining, and the Holetown Monument marking where it all began in 1627.', href: 'https://www.visitbarbados.org/holetown', linkText: 'Explore Holetown' },
   { name: 'Speightstown', detail: 'A working fishing port turned quiet favourite, its colonial \u201cLittle Bristol\u201d architecture giving way to a jetty, an esplanade, and some of the West Coast\u2019s least crowded beaches.', href: 'https://www.visitbarbados.org/speightstownn', linkText: 'Explore Speightstown' },
-  { name: 'The Beach', detail: 'Direct access to the calm, reef-sheltered water the Platinum Coast is famous for \u2014 sea turtles feeding just offshore, and some of the island\u2019s best-loved stretches of sand only minutes away.', href: 'https://barbados.org/bcwest.htm', linkText: 'Platinum Coast beaches' },
+  { name: 'The Beach', detail: 'Easy access, just a short walk from the villa, to the calm, reef-sheltered water the Platinum Coast is famous for \u2014 sea turtles feeding just offshore, and some of the island\u2019s best-loved stretches of sand only minutes away.', href: 'https://barbados.org/bcwest.htm', linkText: 'Platinum Coast beaches' },
   { name: 'Golf', detail: 'Five championship courses within easy reach ', href: 'https://www.top100golfcourses.com/golf-courses/caribbean/barbados', linkText: 'Barbados Golf Courses' },
 ];
 
 const fineDining = [
   { name: 'Lone Star', detail: 'A Platinum Coast institution on the beach at Mount Standfast \u2014 European and Caribbean flavours, a buzzy see-and-be-seen crowd, and Sunday lunch that\u2019s a local ritual.', href: 'https://thelonestar.com/' },
-  { name: 'The Cliff', detail: 'Barbados\u2019s original fine-dining landmark, its torch-lit terraces built into the rock face above the sea. Now under Michelin-starred chef Matt Worswick.', href: 'https://www.thecliffbarbados.com/' },
+  { name: 'The Cliff', detail: 'Barbados\u2019s original fine-dining landmark, its torch-lit terraces built into the rock face above the sea. The restaurant is now led by Michelin-starred chef Matt Worswick.', href: 'https://www.thecliffbarbados.com/' },
   { name: 'The Cliff Beach House', detail: 'The Cliff\u2019s easier-going sister on the sand at Derricks \u2014 all-day dining, wood-fired pizza and sunset sessions in place of white tablecloths.', href: 'https://www.thecliffbeachhouse.com/' },
   { name: 'Baia', detail: 'Peruvian-fusion cooking on a cliffside beachfront just north of Speightstown, with ceviche, an open charcoal grill and a strong tequila list.', href: 'https://baiabarbados.com/' },
   { name: 'The Fishpot', detail: 'Fresh seafood inside a 17th-century fort on the northwest coast, family-run for over twenty years with an unbeatable view over the bay.', href: 'https://www.fishpotbarbados.com/' },
-  { name: 'Derri\u00e8re', detail: 'An authentic French brasserie tucked into Limegrove \u2014 steak frites, moules mariniere and a proper Parisian wine list, from breakfast through to late.', href: 'https://derriererestaurant.com/' },
+  { name: 'Derri\u00e8re', detail: 'An authentic French brasserie tucked into Limegrove \u2014 steak frites, moules marini\u00e8res and a proper Parisian wine list, from breakfast through to late.', href: 'https://derriererestaurant.com/' },
   { name: 'Fusion', detail: 'Penthouse dining atop Limegrove with a retractable roof and sweeping West Coast views \u2014 sophisticated, international, and best after dark.', href: 'https://www.fusionrooftop.com/' },
   { name: 'West 101', detail: 'Gourmet island cooking by day from Chef Michael Hinds, turning into one of Holetown\u2019s liveliest bars by night, right in Limegrove.', href: 'https://www.101westbarbados.com/' },
 ];
@@ -24,7 +24,7 @@ const beachAndCasual = [
   { name: 'La Cabane', detail: 'Barefoot beach dining on Batts Rock, all swings and hand-painted signs \u2014 Mediterranean-Bajan food from the team behind Derri\u00e8re.', href: 'https://www.lacabanebarbados.com/' },
   { name: 'Local & Co', detail: 'Farm-to-table dining, a market and a rum bar inside a lovingly restored 18th-century warehouse on the beach in Speightstown \u2014 beautifully done and true to its word.', href: 'https://www.barbadosbarbados.com/dining/local-co/' },
   { name: 'Sand Street Bistro', detail: 'A relaxed beachfront bistro in the heart of Speightstown, with sunset views across the road from the sand and a well-loved happy hour.', href: 'https://www.sandstreetbistro.com/' },
-  { name: 'Juma\u2019s', detail: 'Family-friendly, ocean-front dining on Alleynes Bay, two doors up from Lone Star \u2014 a Platinum Coast favourite for sunset dinners.', href: 'https://jumasrestaurant.com/' },
+  { name: 'Juma\u2019s', detail: 'Family-friendly, oceanfront dining on Alleynes Bay, two doors up from Lone Star \u2014 a Platinum Coast favourite for sunset dinners.', href: 'https://jumasrestaurant.com/' },
   { name: 'Juju\u2019s', detail: 'Toes-in-the-sand simplicity at Mount Standfast \u2014 fresh catch, cold Banks beer and a straightforward menu right on one of the West Coast\u2019s best beaches.', href: 'https://www.tripadvisor.com/Restaurant_Review-g11847553-d4738692-Reviews-Ju_Ju_s_Beach_Bar-Mount_Standfast_Saint_James_Parish_Barbados.html' },
   { name: 'Bombas', detail: 'Farm-to-table, sea-to-table dining right on Mullins Bay \u2014 fresh daily catch curated by owner Wayne, with a warm, colourful, laid-back setting.', href: 'https://www.bombasbarbados.com/' },
 ];
@@ -38,11 +38,11 @@ const itinerary = [
   { day: 'Day One', title: 'Arrival', copy: 'Touch down and settle in. Ease into island time on the covered patio with a rum punch as the sun drops over the garden, or take a first dip in the pool before dinner in \u2014 the chef\u2019s kitchen can be stocked and ready at your request, so there\u2019s no need to leave the villa on day one.' },
   { day: 'Day Two', title: 'Alleynes Bay', copy: 'A short drive to Alleynes Bay for a morning on the sand \u2014 calm, clear West Coast water, ideal for an easy swim before lunch back at the villa. Afternoon by the pool, sundowners at the wet bar. Dinner at <a href="https://www.fishpotbarbados.com/" target="_blank" rel="noopener noreferrer">The Fishpot</a> is the perfect way to round off the day.' },
   { day: 'Day Three', title: 'Boat Trip & Snorkelling with <a href="https://www.captaindwayne.com/" target="_blank" rel="noopener noreferrer">Captain Dwayne</a>', copy: 'A full day on the water with Captain Dwayne\u2019s cruises along the Platinum Coast \u2014 snorkelling with turtles and over a shipwreck, with rum punch on tap for the ride home. Pack a swimsuit and sun cream, and keep dinner back at the villa easy after a day in the sun.' },
-  { day: 'Day Four', title: '<a href="https://limegrove.com/" target="_blank" rel="noopener noreferrer">Limegrove</a> & <a href="https://thelonestar.com/the-restaurant/" target="_blank" rel="noopener noreferrer">The Lone Star</a>', copy: 'Late start, then into Holetown for the afternoon \u2014 <a href="https://limegrove.com/" target="_blank" rel="noopener noreferrer">Limegrove</a> Lifestyle Centre for shopping, a browse through the boutiques, maybe lunch out. In the evening, dinner at <a href="https://thelonestar.com/the-restaurant/" target="_blank" rel="noopener noreferrer">The Lone Star</a>, the famed beachfront restaurant on the Platinum Coast, an easy walk or short drive from the villa.' },
+  { day: 'Day Four', title: '<a href="https://limegrove.com/" target="_blank" rel="noopener noreferrer">Limegrove</a> & <a href="https://thelonestar.com/the-restaurant/" target="_blank" rel="noopener noreferrer">Lone Star</a>', copy: 'Late start, then into Holetown for the afternoon \u2014 <a href="https://limegrove.com/" target="_blank" rel="noopener noreferrer">Limegrove</a> Lifestyle Centre for shopping, a browse through the boutiques, maybe lunch out. In the evening, dinner at <a href="https://thelonestar.com/the-restaurant/" target="_blank" rel="noopener noreferrer">Lone Star</a>, the famed beachfront restaurant on the Platinum Coast, a short drive from the villa.' },
   { day: 'Day Five', title: 'Friday Night in Oistins', copy: 'No week in Barbados is complete without Friday night at Oistins \u2014 the fish fry, the music, the whole south coast turning out for grilled mahi-mahi and cold beer at communal tables. Loud, local, and one of the best nights on the island.' },
   { day: 'Day Six', title: "Harrison's Cave", copy: 'A change of pace inland: Harrison\u2019s Cave for the underground tram tour through Barbados\u2019s limestone caverns \u2014 cool, dramatic, and a good contrast to a week by the water. Back at the villa by afternoon for pool time and a quiet evening in.' },
   { day: 'Day Seven', title: 'Sunday at <a href="https://www.seashedbarbados.com/" target="_blank" rel="noopener noreferrer">Sea Shed</a> or <a href="https://www.lacabanebarbados.com/" target="_blank" rel="noopener noreferrer">La Cabane</a>', copy: 'Round out the week the way Barbados does \u2014 a long, easy Sunday at <a href="https://www.seashedbarbados.com/" target="_blank" rel="noopener noreferrer">Sea Shed</a> or <a href="https://www.lacabanebarbados.com/" target="_blank" rel="noopener noreferrer">La Cabane</a>, beachfront dining with your toes in the sand and no particular plan for the afternoon.' },
-  { day: 'Day Eight', title: 'Departure', copy: 'Last swim, last coffee on the terrace, pack up and go \u2014 already planning the next visit.' },
+  { day: 'Day Eight', title: 'Departure day', copy: 'Last swim, last coffee on the terrace, pack up and go \u2014 already planning the next visit.' },
 ];
 ---
 <BaseLayout title="Location" description="Carlton Ridge sits in Carlton View Estate on Barbados's West Coast, near Holetown and Speightstown.">
@@ -58,8 +58,8 @@ const itinerary = [
 
   <section class="section-navy map-section">
     <div class="wrap map-section__inner">
-      <p class="eyebrow eyebrow--light">Find Us</p>
-      <h2>CARLTON RIDGE IS FORTY MINUTES FROM THE AIRPORT, MAKING ARRIVAL AS EFFORTLESS AS THE STAY ITSELF</h2>
+      <p class="eyebrow eyebrow--light">Find us</p>
+      <h2>Carlton Ridge is about a 40-minute drive from the airport, making arrival as effortless as the stay itself</h2>
       <p class="map-section__lede">Grantley Adams Airport, Bridgetown (BGI) is one of the most accessible island airports in the Caribbean &mdash; with direct flights from the UK, Europe, Canada and most major East Coast North American cities.</p>
     </div>
     <div class="map-embed">
@@ -99,14 +99,14 @@ const itinerary = [
 
   <section class="section-navy dining-section">
     <div class="wrap intro">
-      <p class="eyebrow eyebrow--light">Where To Eat</p>
-      <h2 class="h2--light">Our Favourite Restaurants</h2>
+      <p class="eyebrow eyebrow--light">Where to eat</p>
+      <h2 class="h2--light">Our favourite restaurants</h2>
       <div class="divider divider--light"></div>
       <p class="lede lede--light">A short list of West Coast favourites, from torch-lit fine dining to toes-in-the-sand beach bars &mdash; all within easy reach of Carlton Ridge.</p>
     </div>
 
     <div class="wrap dining-group">
-      <h3 class="dining-group__title">Fine Dining</h3>
+      <h3 class="dining-group__title">Fine dining</h3>
       <div class="dining-grid">
         {fineDining.map(r => (
           <div class="dining-card">
@@ -119,7 +119,7 @@ const itinerary = [
     </div>
 
     <div class="wrap dining-group">
-      <h3 class="dining-group__title">Beach Bars &amp; Casual</h3>
+      <h3 class="dining-group__title">Beach bars &amp; casual</h3>
       <div class="dining-grid">
         {beachAndCasual.map(r => (
           <div class="dining-card">
@@ -134,8 +134,8 @@ const itinerary = [
 
   <section class="section section-sand things-to-do">
     <div class="wrap intro">
-      <p class="eyebrow">Things To Do</p>
-      <h2>Make The Most Of Your Stay</h2>
+      <p class="eyebrow">Things to do</p>
+      <h2>Make the most of your stay</h2>
       <div class="divider"></div>
       <p class="lede">A couple of trusted local recommendations, and a suggested week to help shape your stay.</p>
     </div>
@@ -152,8 +152,8 @@ const itinerary = [
     </div>
 
     <div class="wrap itinerary-intro">
-      <p class="eyebrow">Suggested Itinerary</p>
-      <h3>A Week at Carlton Ridge</h3>
+      <p class="eyebrow">Suggested itinerary</p>
+      <h3>A Stay at Carlton Ridge</h3>
       <p class="itinerary-intro__copy">A guest itinerary &mdash; the best of the West Coast, at your own pace.</p>
     </div>
 
