@@ -16,15 +16,15 @@ const faqs = [
   },
   {
     q: 'WHAT ARE THE RATES, AND DO THEY VARY BY SEASON?',
-    a: 'Yes, rates are seasonal. As a guide, per night for the full six-bedroom villa: Christmas USD $2,500, Winter USD $1,700, Summer USD $1,200. The four-bedroom main house alone is also available at a lower nightly rate across the same seasons \u2014 see the full price table on our Reserve page LINK_RESERVE. All rates are subject to a 10% Shared Economy Levy and a 2.5% Service Fee.',
+    a: 'Yes, rates are seasonal. As a guide, per night for the full six-bedroom villa: Christmas USD $2,500, Winter USD $1,700, Summer USD $1,200. The four-bedroom main house alone is also available at a lower nightly rate across the same seasons \u2014 see the full price table on our <a href="/reserve">Reserve page</a>. All rates are subject to a 10% Shared Economy Levy and a 2.5% Service Fee.',
   },
   {
     q: 'HOW DO I CHECK AVAILABILITY OR MAKE A BOOKING?',
-    a: 'Carlton Ridge is managed by Island Villas. You can check live availability and enquire directly through their listing LINK_ENQUIRY_NEW_TAB, or call their Barbados team on +1 (246) 422-3333.',
+    a: 'Carlton Ridge is managed by Island Villas. You can check live availability and enquire directly through <a href="https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE#/" target="_blank" rel="noopener noreferrer">their listing</a>, or call their Barbados team on +1 (246) 422-3333.',
   },
   {
     q: 'WHAT IS THE MINIMUM STAY?',
-    a: 'We require a minimum of 5 nights. Holiday periods may have extended minimum stays requirements - please check with Island Villas, our managing agent \u2014 at LINK_ENQUIRY_NEW_TAB.',
+    a: 'We require a minimum of 5 nights. Holiday periods may have extended minimum stays requirements - please check with Island Villas, our managing agent \u2014 at <a href="https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE#/" target="_blank" rel="noopener noreferrer">their listing</a>.',
   },
   {
     q: 'WHAT ARE CHECK-IN AND CHECK-OUT TIMES?',
@@ -80,7 +80,7 @@ const faqs = [
   },
   {
     q: 'IS THERE A CANCELLATION POLICY?',
-    a: 'Yes. Cancellation policy varies by seasion.  Check here for details LINK_CANCELLATION_POLICY.',
+    a: 'Yes. Cancellation policy varies by seasion.  Check <a href="https://www.island-villas.com/deposit-payment-and-cancellation-policy#/" target="_blank" rel="noopener noreferrer">here</a> for details.',
   },
   {
     q: "DON'T SEE YOUR QUESTION HERE?",
@@ -102,7 +102,7 @@ const faqs = [
       {faqs.map(f => (
         <details class="faq-item">
           <summary>{f.q}</summary>
-          <p>{f.a}</p>
+          <p set:html={f.a} />
         </details>
       ))}
     </div>
@@ -135,4 +135,5 @@ const faqs = [
   }
   .faq-item[open] summary::after { content: '\2212'; }
   .faq-item p { color: var(--navy-soft); margin-top: 1rem; font-size: 0.95rem; line-height: 1.6; }
+  .faq-item p a { color: var(--gold); text-decoration: underline; }
 </style>
