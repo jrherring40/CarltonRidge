@@ -5,7 +5,7 @@ const houseFeatures = [
   { title: 'The Kitchen', img: '/images/Kitchen.jpeg', copy: 'A double oven and a run of counter space built for real cooking, opening directly onto the covered dining patio so nothing gets cold, or lonely, on the way to the table.' },
   { title: 'The Living Room', img: '/images/LivingRoom.jpeg', copy: 'High ceilings and cross-breezes from ceiling fans throughout, with the living area folding out onto a covered terrace for indoor-outdoor evenings.' },
   { title: 'Master Suite', img: '/images/mastersuite2.png', copy: 'Wake to garden and pool views, the main master suite opens directly onto a covered veranda. It has its own TV and seating area and a walk-in dressing room with make up table, making this the villa’s most private and spacious bedroom.' },
-  { title: 'Master Bath', img: '/images/MasterBathroom.jpeg', copy: 'His-and-hers vanities, a walk-in dressing room, and a large, deep bath that converts to a private steam room. Every bedroom in the house is en suite.' },
+  { title: 'Master Bath', img: '/images/MasterBathroom.jpeg', copy: 'A generous en-suite designed for unwinding, with his-and-hers vanities, a deep bath that converts to a steam room. After a day by the pool or exploring the island, it’s a lovely place to slow down and recharge with robes and slippers, local toiletries from <a href="https://stlucybotanists.com" target="_blank" rel="noopener noreferrer">St Lucy Botanists</a> included.' },
 ];
 ---
 <BaseLayout title="The Villa" description="A room-by-room look at Carlton Ridge's main house and grounds.">
@@ -31,7 +31,7 @@ const houseFeatures = [
         <div class="feature-card">
           <img src={f.img} alt={f.title} />
           <h3>{f.title}</h3>
-          <p>{f.copy}</p>
+          <p set:html={f.copy} />
         </div>
       ))}
     </div>
