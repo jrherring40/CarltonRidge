@@ -1,57 +1,58 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const stats = [
-  { n: '6', l: 'Bedrooms' },
-  { n: '8', l: 'Bathrooms' },
-  { n: '12', l: 'Guests' },
-  { n: '6,000', l: 'Sq. Ft.' },
+const heroFacts = '6 bedrooms · 8 bathrooms · Sleeps 12 · 6,000 sq ft';
+
+const outdoorLiving = [
+  'Large private swimming pool with wet bar',
+  'Covered terrace for long lunches and evening drinks',
+  'Generous gardens and space to relax',
+  'Chef’s kitchen with double oven',
+  'Air conditioning throughout',
+  'Every bedroom en suite',
 ];
 
-const amenities = [
-  'Private heptagonal pool & wet bar',
-  'Fully self-contained two-bedroom garden residence',
-  'Chef’s kitchen with double oven',
-  'Master suite with large, deep bath & steam room',
+const thoughtfullyEquipped = [
+  'Separate two-bedroom garden residence',
+  'Principal suite with deep bath and steam room',
   'Whole-property backup generator',
-  'Electronic gates & alarm system',
-  'Full irrigation & water softening',
-  'Air conditioning throughout',
+  'Electronic gates and alarm',
+  'Water softening and full garden irrigation',
 ];
 ---
-<BaseLayout title="Carlton Ridge - A Private West Coast Residence">
-  <!-- HERO -->
+<BaseLayout title="Carlton Ridge - A Private Barbados Residence on the West Coast">
+  <!-- 1. HERO -->
   <section class="hero">
     <img src="/images/ArialSeaview.jpeg" alt="Aerial view of Carlton Ridge and the Barbados coastline" class="hero__img" />
     <div class="hero__scrim"></div>
     <div class="wrap hero__content">
-      <p class="eyebrow eyebrow--light">Holetown &middot; St. James &middot; West Coast, Barbados</p>
+      <p class="eyebrow eyebrow--light">Private Barbados Residence &middot; West Coast</p>
       <h1>Carlton Ridge</h1>
-      <p class="hero__lede">A private Barbados residence designed for gathering — six bedrooms in total, four in the main villa and two in the self-contained garden residence, with grounds that run down to a large private pool, all a short walk from the island’s calmest water.</p>
+      <p class="hero__headline">A private residence for unforgettable weeks in Barbados</p>
+      <p class="hero__lede">Six bedrooms. A beautiful private pool. Space to gather, space to escape, and the Caribbean just a short walk away.</p>
+      <p class="hero__sub">Spend slow mornings by the pool, long lunches beneath the terrace, sunset drinks as the garden cools &mdash; and evenings together over dinner and a barbecue.</p>
       <div class="hero__ctas">
-        <a href="/reserve" class="btn btn-gold">Reserve to Stay</a>
-        <a href="/gallery" class="btn btn-outline-light">View Gallery</a>
+        <a href="/reserve" class="btn btn-gold">Reserve Your Stay</a>
+        <a href="#experience" class="btn btn-outline-light">Explore Carlton Ridge</a>
       </div>
     </div>
     <div class="wrap hero__stats">
-      {stats.map(s => (
-        <div class="stat">
-          <span class="stat__n">{s.n}</span>
-          <span class="stat__l">{s.l}</span>
-        </div>
-      ))}
+      <p class="hero__facts">{heroFacts}</p>
     </div>
   </section>
 
-  <!-- INTRO -->
-  <section class="section section-sand intro">
+  <!-- 2. THE EXPERIENCE -->
+  <section class="section section-sand intro" id="experience">
     <div class="wrap intro__grid">
       <div class="intro__text">
-        <p class="eyebrow">Welcome</p>
-        <h2>A residence built for lazy mornings, pool days and sunset evenings</h2>
+        <p class="eyebrow">The experience</p>
+        <h2>Your week at Carlton Ridge</h2>
         <div class="divider"></div>
-        <p>Set on the largest plot in Carlton View Estate, Carlton Ridge is an immaculately maintained residence of some 6,000 square feet, arranged so that the main rooms open onto views of the garden and pool. Four bedrooms sit within the main house; a further two form a private, fully self-contained garden residence with its own kitchen, living space and patio &mdash; ideal for extended family, staff, or guests who value their own front door.</p>
-        <p>Inside, a chef’s kitchen with double oven and generous counter space opens onto a covered dining patio built for entertaining. Every bedroom is en suite, and the principal suite adds his-and-hers vanities, a walk-in dressing room and a large, deep bath that converts to a steam room.</p>
+        <p>There is a particular pleasure to having a house in Barbados that is entirely your own.</p>
+        <p>Breakfast when you feel like it. A few hours around the pool. A walk down to the Caribbean before lunch. Sunset drinks on the terrace. Dinner outside while the evening stretches on.</p>
+        <p>Carlton Ridge gives everyone room to be together &mdash; without everyone having to do the same thing.</p>
+        <p>With four bedrooms in the main house and a completely self-contained two-bedroom garden residence, families and friends can share the week while still having space of their own.</p>
+        <p class="intro__close">This is Barbados at an unhurried pace.</p>
       </div>
       <div class="intro__image">
         <div class="hept-frame">
@@ -66,46 +67,99 @@ const amenities = [
     </div>
   </section>
 
-  <!-- MAIN HOUSE / GARDEN RESIDENCE -->
+  <!-- 3. THE PROPERTY -->
   <section class="section split">
     <div class="split__panel">
       <img src="/images/LivingRoom.jpeg" alt="Living room in the main house at Carlton Ridge" />
       <div class="split__caption">
         <p class="eyebrow">The main house</p>
-        <h3>Four bedrooms, one generous heart</h3>
-        <p>High ceilings and ceiling fans carry the sea breeze through open-plan living spaces, all finished with the quiet restraint of a home built to be lived in, not just photographed.</p>
-        <a href="/the-villa" class="btn btn-outline-dark">Tour the Villa</a>
+        <h3>Space to be together</h3>
+        <p>Four en suite bedrooms and open-plan living spaces with high ceilings and ceiling fans that carry the sea breeze through &mdash; a home built to be lived in, not just photographed.</p>
+        <a href="/the-villa" class="btn btn-outline-dark">Tour the Main House</a>
       </div>
     </div>
     <div class="split__panel">
-      <img src="/images/CottageLivingRoom.jpeg" alt="Living room in the self-contained garden residence at Carlton Ridge" />
+      <img src="/images/CottageLivingRoom.jpeg" alt="Living room in the private garden residence at Carlton Ridge" />
       <div class="split__caption">
         <p class="eyebrow">The garden residence</p>
-        <h3>A private two-bedroom retreat</h3>
-        <p>Its own kitchen, living room and terrace make the garden residence a self-sufficient annex &mdash; perfect for multigenerational stays without anyone underfoot.</p>
+        <h3>Space to be yourself</h3>
+        <p>Your own private two-bedroom residence in the garden, with its own kitchen, living room and terrace.</p>
         <a href="/garden-residence" class="btn btn-outline-dark">See the Garden Residence</a>
       </div>
     </div>
   </section>
 
-  <!-- AMENITIES -->
-  <section class="section section-navy amenities">
-    <div class="wrap">
-      <p class="eyebrow">In residence</p>
-      <h2>Every comfort, quietly handled</h2>
-      <ul class="amenities__list">
-        {amenities.map(a => <li>{a}</li>)}
-      </ul>
+  <!-- 4. GARDEN RESIDENCE -->
+  <section class="section feature">
+    <div class="wrap feature__grid">
+      <div class="feature__text">
+        <p class="eyebrow">Your own private two-bedroom retreat</p>
+        <h2>Together, with room to breathe</h2>
+        <div class="divider"></div>
+        <p class="feature__lead">Four bedrooms in the main house. Two more in your own private garden residence.</p>
+        <p>Carlton Ridge works particularly well for families and groups travelling together.</p>
+        <p>The separate two-bedroom garden residence has its own kitchen, living space and terrace, giving grandparents, older children, friends or staff the freedom to have their own space while remaining part of the same holiday.</p>
+        <p class="feature__close">It feels less like booking a large villa &mdash; and more like having your own private Barbados estate for the week.</p>
+        <a href="/garden-residence" class="btn btn-outline-dark">See the Garden Residence</a>
+      </div>
+      <img class="feature__img" src="/images/CottageTerrace.jpeg" alt="Terrace of the private garden residence at Carlton Ridge" />
     </div>
   </section>
 
-  <!-- GALLERY TEASER -->
+  <!-- 5. POOL / OUTDOOR LIVING -->
+  <section class="section outdoor">
+    <img src="/images/poolsunset.png" alt="The pool at Carlton Ridge at sunset" class="outdoor__img" />
+    <div class="outdoor__scrim"></div>
+    <div class="wrap outdoor__content">
+      <p class="eyebrow eyebrow--light">The pool &amp; grounds</p>
+      <h2>Days are meant to be spent outside</h2>
+      <p>Days by the pool. Sunset drinks on the terrace. Barbecue dinners under the Caribbean sky.</p>
+    </div>
+  </section>
+
+  <!-- 6. WHAT'S INCLUDED -->
+  <section class="section section-navy amenities">
+    <div class="wrap">
+      <p class="eyebrow">What&rsquo;s included</p>
+      <h2>Everything you need for an effortless week</h2>
+      <div class="amenities__cols">
+        <div>
+          <h3>Made for living outdoors</h3>
+          <ul class="amenities__list">
+            {outdoorLiving.map(a => <li>{a}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h3>Thoughtfully equipped</h3>
+          <ul class="amenities__list">
+            {thoughtfullyEquipped.map(a => <li>{a}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. LOCATION -->
+  <section class="section location-teaser">
+    <img src="/images/AerialPlan.jpeg" alt="Aerial plan view of Carlton Ridge and surrounding estate" class="location-teaser__img" />
+    <div class="location-teaser__scrim"></div>
+    <div class="wrap location-teaser__content">
+      <p class="eyebrow eyebrow--light">The West Coast of Barbados</p>
+      <h2>The best of Barbados on your doorstep</h2>
+      <p>Carlton Ridge sits on Barbados&rsquo; West Coast, close to the calm Caribbean waters that make this side of the island so special.</p>
+      <p>The beach is a short walk away, while Holetown, Speightstown, restaurants, golf and the island&rsquo;s favourite beaches are all within easy reach.</p>
+      <p>Close enough to enjoy everything. Private enough to come home and switch off.</p>
+      <a href="/location" class="btn btn-outline-light">Explore the Area</a>
+    </div>
+  </section>
+
+  <!-- 8. GALLERY -->
   <section class="section section-sand gallery-teaser">
     <div class="wrap">
       <div class="gallery-teaser__head">
         <div>
-          <p class="eyebrow">A closer look</p>
-          <h2>Rooms, gardens &amp; the pool terrace</h2>
+          <p class="eyebrow">The gallery</p>
+          <h2>Take a closer look</h2>
         </div>
         <a href="/gallery" class="btn btn-outline-dark">Full Gallery</a>
       </div>
@@ -117,23 +171,15 @@ const amenities = [
     </div>
   </section>
 
-  <!-- LOCATION TEASER -->
-  <section class="section location-teaser">
-    <img src="/images/AerialPlan.jpeg" alt="Aerial plan view of Carlton Ridge and surrounding estate" class="location-teaser__img" />
-    <div class="location-teaser__scrim"></div>
-    <div class="wrap location-teaser__content">
-      <p class="eyebrow eyebrow--light">Where you are</p>
-      <h2>Minutes from Holetown and Speightstown</h2>
-      <p>Near-beach, on the West Coast, within easy reach of golf, dining and the calm waters Barbados is known for.</p>
-      <a href="/location" class="btn btn-outline-light">Explore the Area</a>
-    </div>
-  </section>
-
-  <!-- CTA BAND -->
+  <!-- 9. CTA -->
   <section class="section cta-band">
     <div class="wrap cta-band__inner">
-      <h2>Ready to make Carlton Ridge yours for the week?</h2>
-      <a href="/reserve" class="btn btn-gold">Check Availability</a>
+      <div class="cta-band__text">
+        <h2>Your Barbados week starts here</h2>
+        <p>Six bedrooms. Twelve guests. Your own private pool, gardens and space to come together.</p>
+        <p>Check available dates and start planning your stay at Carlton Ridge.</p>
+      </div>
+      <a href="/reserve" class="btn btn-gold">Reserve Your Stay</a>
     </div>
   </section>
 </BaseLayout>
@@ -171,6 +217,30 @@ const amenities = [
   .amenities__list li { position: relative; padding-left: 1.6em; font-size: 0.95rem; color: var(--duck-egg-pale); }
   .amenities__list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 8px; height: 8px; border: 1px solid var(--gold); transform: rotate(45deg); }
 
+  .hero__headline { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2rem); color: var(--white); margin: 0.6rem 0 0; }
+  .hero__sub { max-width: 560px; margin-top: 0.8rem; color: var(--duck-egg-pale); font-size: 0.98rem; }
+  .hero__facts { margin: 0; font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); }
+  .intro__close { font-family: var(--font-display); font-size: 1.3rem; color: var(--navy); }
+
+  .feature__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .feature__text p { color: var(--navy-soft); }
+  .feature__lead { font-size: 1.1rem; color: var(--navy); }
+  .feature__close { font-family: var(--font-display); font-size: 1.25rem; color: var(--navy); }
+  .feature__img { width: 100%; height: 520px; object-fit: cover; }
+
+  .outdoor { position: relative; min-height: 55vh; display: flex; align-items: center; color: var(--white); }
+  .outdoor__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .outdoor__scrim { position: absolute; inset: 0; background: rgba(22,38,58,0.5); }
+  .outdoor__content { position: relative; max-width: 620px; }
+  .outdoor__content h2 { color: var(--white); }
+  .outdoor__content p { color: var(--duck-egg-pale); font-size: 1.1rem; }
+
+  .amenities__cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2.5rem; }
+  .amenities__cols h3 { margin: 0; }
+  .amenities__cols .amenities__list { grid-template-columns: 1fr; margin-top: 1.5rem; }
+
+  .cta-band__text p { margin: 0.6rem 0 0; color: var(--navy); }
+
   .gallery-teaser__head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
   .gallery-teaser__grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 1.2rem; }
   .gallery-teaser__grid img { width: 100%; height: 340px; object-fit: cover; }
@@ -193,6 +263,8 @@ const amenities = [
     .intro__grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .hept-frame { width: 320px; height: 320px; }
     .split { grid-template-columns: 1fr; }
+    .feature__grid, .amenities__cols { grid-template-columns: 1fr; gap: 2.5rem; }
+    .feature__img { height: 340px; }
     .amenities__list { grid-template-columns: 1fr; }
     .gallery-teaser__grid { grid-template-columns: 1fr; }
   }
