@@ -8,7 +8,7 @@ const faqs = [
   },
   {
     q: "WHAT'S INCLUDED IN THE VILLA?",
-    a: 'Your stay includes the full estate, all six bedrooms, and use of all amenities, with a chef\u2019s kitchen (double oven, ample counter space), air conditioning throughout, ceiling fans, a private pool with wet bar and gazebo, a games room with pool table, and full irrigation and manicured gardens. Bedrooms are all en suite with air-conditioning; the two-bedroom garden residence has its own full kitchen, living area and shared patio.',
+    a: 'Your stay includes the full estate, all six bedrooms, and use of all amenities, with a chef’s kitchen (double oven, ample counter space), air conditioning throughout, ceiling fans, a private pool with wet bar and gazebo, a games room with pool table, and full irrigation and manicured gardens. Bedrooms are all en suite with air-conditioning; the two-bedroom garden residence has its own full kitchen, living area and shared patio.',
   },
   {
     q: 'IS THE GARDEN RESIDENCE SEPARATE FROM THE MAIN HOUSE?',
@@ -20,15 +20,15 @@ const faqs = [
   },
   {
     q: 'IS THE VILLA SUITABLE FOR FAMILIES WITH CHILDREN?',
-    a: "The layout \u2014 four bedrooms in the main house plus a separate two-bedroom garden residence \u2014 suits multigenerational or family groups well, giving older children or grandparents their own space. Specific child-safety features such as pool fencing, cots or high chairs can be arranged directly through Island Villas if travelling with young children.",
+    a: "The layout — four bedrooms in the main house plus a separate two-bedroom garden residence — suits multigenerational or family groups well, giving older children or grandparents their own space. Specific child-safety features such as pool fencing, cots or high chairs can be arranged directly through Island Villas if travelling with young children.",
   },
   {
     q: 'IS CARLTON RIDGE CLOSE TO THE BEACH?',
-    a: 'Yes \u2014 the villa is 700 metres from Thunder Bay beach, and within easy reach of the Platinum Coast beaches near to Holetown and Speightstown such as Alleynes Bay, Mullins Beach and Heywoods Beach.',
+    a: 'Yes — the villa is 700 metres from Thunder Bay beach, and within easy reach of the Platinum Coast beaches near to Holetown and Speightstown such as Alleynes Bay, Mullins Beach and Heywoods Beach.',
   },
   {
     q: 'WHAT ARE THE RATES, AND DO THEY VARY BY SEASON?',
-    a: 'Yes, rates are seasonal. As a guide, per night for the full six-bedroom villa: Christmas US$2,500, Winter US$1,700, Summer US$1,200. The four-bedroom main house alone is also available at a lower nightly rate across the same seasons \u2014 see the full price table on our <a href="/reserve">Reserve page</a>. All rates are subject to a 10% Shared Economy Levy and a 2.5% Service Fee.',
+    a: 'Yes, rates are seasonal. As a guide, per night for the full six-bedroom villa: Christmas US$2,500, Winter US$1,700, Summer US$1,200. The four-bedroom main house alone is also available at a lower nightly rate across the same seasons — see the full price table on our <a href="/reserve">Reserve page</a>. All rates are subject to a 10% Shared Economy Levy and a 2.5% Service Fee.',
   },
   {
     q: 'HOW DO I CHECK AVAILABILITY OR MAKE A BOOKING?',
@@ -36,7 +36,7 @@ const faqs = [
   },
   {
     q: 'WHAT IS THE MINIMUM STAY?',
-    a: 'We require a minimum of five nights. Holiday periods may have extended minimum stay requirements - please check with Island Villas, our managing agent \u2014 at <a href="https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE#/" target="_blank" rel="noopener noreferrer">their listing</a>.',
+    a: 'We require a minimum of five nights. Holiday periods may have extended minimum stay requirements - please check with Island Villas, our managing agent — at <a href="https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE#/" target="_blank" rel="noopener noreferrer">their listing</a>.',
   },
   {
     q: 'IS THERE A SECURITY DEPOSIT?',
@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: 'IS THERE AIR CONDITIONING THROUGHOUT?',
-    a: 'Yes \u2014 air conditioning is fitted in every bedroom, and the kitchen and living room of the main house. Ceiling fans are fitted in all areas of the main house and garden residence, including bathrooms and walk-in wardrobes, and the outdoor poolside wet bar.',
+    a: 'Yes — air conditioning is fitted in every bedroom, and the kitchen and living room of the main house. Ceiling fans are fitted in all areas of the main house and garden residence, including bathrooms and walk-in wardrobes, and the outdoor poolside wet bar.',
   },
   {
     q: 'WHAT SECURITY FEATURES DOES THE PROPERTY HAVE?',
@@ -60,7 +60,7 @@ const faqs = [
   },
   {
     q: 'HOW FAR IS CARLTON RIDGE FROM THE AIRPORT?',
-    a: 'The villa is located in Carlton View Estate, Holetown, St. James, on the West Coast \u2014 approximately a 40-minute drive from Grantley Adams International Airport. Precise directions will be provided by Island Villas prior to arrival.',
+    a: 'The villa is located in Carlton View Estate, Holetown, St. James, on the West Coast — approximately a 40-minute drive from Grantley Adams International Airport. Precise directions will be provided by Island Villas prior to arrival.',
   },
   {
     q: 'IS THERE A CANCELLATION POLICY?',
@@ -75,8 +75,19 @@ const faqs = [
     a: 'Get in touch via our <a href="https://www.island-villas.com/contact" target="_blank" rel="noopener noreferrer">Contact Us</a> page and we’ll get back to you directly.',
   }
 ];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a.replace(/<[^>]+>/g, '') },
+  })),
+};
 ---
 <BaseLayout title="FAQ" description="Frequently asked questions about staying at Carlton Ridge, Barbados.">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <section class="page-hero">
     <div class="wrap page-hero__content">
       <p class="eyebrow">Good to know</p>
