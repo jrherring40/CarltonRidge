@@ -125,8 +125,9 @@ const current = Astro.url.pathname;
   }
 
   @media (max-width: 980px) {
-    .header-actions { gap: 1rem; }
-    .header-cta { order: -1; }
+    .header-actions { gap: 1rem; flex: 1; min-width: 0; }
+    /* Auto margins centre the button between the brand and the menu icon */
+    .header-cta { order: -1; margin: 0 auto; }
     /* Keep the toggle above the slide-out panel so it can close the menu */
     .nav__toggle { display: flex; position: relative; z-index: 3; }
     .nav__backdrop {
@@ -150,15 +151,26 @@ const current = Astro.url.pathname;
       padding: 2rem 2.5rem;
       gap: 1.6rem;
       transform: translateX(100%);
-      transition: transform 0.4s ease;
+      visibility: hidden;
+      transition: transform 0.4s ease, visibility 0s linear 0.4s;
       z-index: 2;
     }
-    .nav__list.is-open { transform: translateX(0); }
+    .nav__list.is-open { transform: translateX(0); visibility: visible; transition-delay: 0s; }
   }
 
   @media (max-width: 420px) {
-    .brand__name { font-size: 1.25rem; }
-    .header-cta { padding: 0.65em 1em; font-size: 0.66rem; letter-spacing: 0.1em; }
+    .brand__name { font-size: 1.1rem; }
+    .header-cta { padding: 0.65em 0.8em; font-size: 0.6rem; letter-spacing: 0.06em; }
+    .brand__sub { font-size: 0.5rem; letter-spacing: 0.14em; }
+    .site-header__inner { gap: 0.75rem; }
+    .header-actions { gap: 0.5rem; }
+    .nav__toggle { padding: 0.4rem 0 0.4rem 0.4rem; }
+    .nav__toggle span { width: 22px; }
+  }
+
+  @media (max-width: 360px) {
+    .brand__name { font-size: 1.05rem; }
+    .brand__sub { display: none; }
   }
 </style>
 

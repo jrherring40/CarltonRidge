@@ -23,8 +23,11 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+html { overflow-x: clip; }
+
 body {
   margin: 0;
+  overflow-x: clip;
   background: var(--sand);
   color: var(--ink);
   font-family: var(--font-body);
