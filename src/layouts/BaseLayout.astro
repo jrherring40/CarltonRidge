@@ -11,9 +11,9 @@ interface Props {
 }
 const {
   title,
-  description = "Carlton Ridge — a six-bedroom luxury villa on Barbados's West Coast, Holetown, St. James.",
+  description = "Carlton Ridge — a private six-bedroom residence on Barbados's West Coast, Holetown, St. James.",
   image = '/images/ArialSeaview.jpeg',
-  imageAlt = "Aerial view of Carlton Ridge villa and its heptagonal pool, Holetown, Barbados.",
+  imageAlt = "Aerial view of Carlton Ridge and its heptagonal pool, Holetown, Barbados.",
 } = Astro.props;
 
 const pageTitle = title.includes('Carlton Ridge') ? title : `${title} \u00b7 Carlton Ridge`;
@@ -61,7 +61,7 @@ const imageURL = new URL(image, Astro.site);
       '@context': 'https://schema.org',
       '@type': 'LodgingBusiness',
       name: 'Carlton Ridge',
-      description: "Carlton Ridge — a six-bedroom luxury villa on Barbados's West Coast, Holetown, St. James.",
+      description: "Carlton Ridge — a private six-bedroom residence on Barbados's West Coast, Holetown, St. James.",
       url: 'https://www.carltonridgevilla.com',
       image: new URL('/images/ArialSeaview.jpeg', Astro.site).toString(),
       address: {
