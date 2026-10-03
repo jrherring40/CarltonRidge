@@ -14,11 +14,11 @@ const {
   title,
   description = "Carlton Ridge — a private six-bedroom residence on Barbados's West Coast, Holetown, St. James.",
   image = '/images/ArialSeaview.jpeg',
-  imageAlt = "Aerial view of Carlton Ridge and its heptagonal pool, Holetown, Barbados.",
+  imageAlt = "Aerial view of Carlton Ridge Villa and its heptagonal pool, Holetown, Barbados.",
   noindex = false,
 } = Astro.props;
 
-const pageTitle = title.includes('Carlton Ridge') ? title : `${title} · Carlton Ridge`;
+const pageTitle = title.includes('Carlton Ridge Villa') ? title : `${title} · Carlton Ridge Villa`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site);
 
