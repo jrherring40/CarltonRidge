@@ -52,8 +52,6 @@ const sections = [
 let n = 0;
 const numbered = sections.map(sec => ({ ...sec, photos: sec.photos.map(p => ({ ...p, index: n++ })) }));
 const total = n;
-// Skip the label for the grounds, and when the title already names the residence (e.g. "Main residence living room").
-const showWhere = (p: { where: string; caption: string }) => p.where !== 'Grounds' && !p.caption.toLowerCase().includes(p.where.toLowerCase());
 ---
 <BaseLayout title="Gallery" description="Photographs of Carlton Ridge: the grounds and pool, main residence, bedrooms and the garden residence.">
   <section class="page-hero">
@@ -76,10 +74,10 @@ const showWhere = (p: { where: string; caption: string }) => p.where !== 'Ground
         <ul class="gallery-grid">
           {sec.photos.map(img => (
             <li class="gallery-grid__cell">
-              <button type="button" class="gallery-item" data-index={img.index} data-caption={img.caption} data-label={showWhere(img) ? `${img.where} \u00b7 ${img.caption}` : img.caption} aria-label={`View larger: ${showWhere(img) ? `${img.where}, ` : ''}${img.caption}`} aria-haspopup="dialog">
+              <button type="button" class="gallery-item" data-index={img.index} data-caption={img.caption} aria-label={`View larger: ${img.caption}`} aria-haspopup="dialog">
                 <img src={img.src} alt={img.alt} loading="lazy" />
               </button>
-              <p class="gallery-caption">{showWhere(img) && <span class="gallery-caption__where">{img.where}</span>}{img.caption}</p>
+              <p class="gallery-caption">{img.caption}</p>
             </li>
           ))}
         </ul>
@@ -131,7 +129,6 @@ const showWhere = (p: { where: string; caption: string }) => p.where !== 'Ground
   .gallery-item:hover img { opacity: 0.85; }
   .gallery-item:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
   .gallery-caption { margin: 0.6rem 0 0; font-size: 0.92rem; color: var(--navy); line-height: 1.4; }
-  .gallery-caption__where { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #7a5f2e; margin-bottom: 0.15rem; }
 
   .gallery-cta { background: var(--gold); }
   .gallery-cta .cta-band__inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
@@ -192,7 +189,7 @@ const showWhere = (p: { where: string; caption: string }) => p.where !== 'Ground
     const img = btn.querySelector('img') as HTMLImageElement;
     lightboxImg.src = img.currentSrc || img.src;
     lightboxImg.alt = img.alt;
-    caption.textContent = btn.dataset.label ?? '';
+    caption.textContent = btn.dataset.caption ?? '';
     count.textContent = `${current + 1} of ${items.length}`;
   }
   function open(i: number, trigger: HTMLElement) {
