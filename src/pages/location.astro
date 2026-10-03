@@ -34,6 +34,13 @@ const recommended = [
   { name: 'Favourite Taxi: Jamal', detail: 'Our go-to driver for airport transfers and getting around the island, with Estilo Chauffeuring.', href: 'https://estilochauffeuring.com/', linkText: 'Visit Estilo Chauffeuring', phone: '+1 246 823 2016' },
 ];
 
+const distances = [
+  { time: '700m', place: 'Thunder Bay' },
+  { time: '10 mins', place: 'Holetown' },
+  { time: '10 mins', place: 'Speightstown' },
+  { time: '40 mins', place: 'Grantley Adams Airport' },
+];
+
 const itinerary = [
   { day: 'Day One', title: 'Arrival', copy: 'Touch down and settle in. Ease into island time on the covered patio with a rum punch as the sun drops over the garden, or take a first dip in the pool before dinner in \u2014 the chef\u2019s kitchen can be stocked and ready at your request, so there\u2019s no need to leave the villa on day one.' },
   { day: 'Day Two', title: 'Alleynes Bay', copy: 'A short drive to Alleynes Bay for a morning on the sand \u2014 calm, clear West Coast water, ideal for an easy swim before lunch back at the villa. Afternoon by the pool, sundowners at the wet bar. Dinner at <a href="https://www.fishpotbarbados.com/" target="_blank" rel="noopener noreferrer">The Fishpot</a> is the perfect way to round off the day.' },
@@ -51,8 +58,25 @@ const itinerary = [
     <div class="page-hero__scrim"></div>
     <div class="wrap page-hero__content">
       <p class="eyebrow eyebrow--light">Carlton View Estate</p>
-      <h1>Location</h1>
-      <p>Holetown, West Coast, St. James, Barbados</p>
+      <h1>Location &amp; Things to do</h1>
+      <p>West Coast, St. James, Barbados</p>
+    </div>
+  </section>
+
+  <section class="section section-sand close-at-hand">
+    <div class="wrap intro">
+      <p class="eyebrow">Nearby</p>
+      <h2>The best of the West Coast, close at hand</h2>
+      <div class="divider"></div>
+      <p class="lede lede--wide">Carlton Ridge gives you the best of both worlds: a peaceful private home when you want to switch off, and the restaurants, beaches, golf and energy of Barbados&rsquo;s West Coast just minutes away.</p>
+    </div>
+    <div class="wrap distance-grid">
+      {distances.map(d => (
+        <div class="distance-card">
+          <p class="distance-card__time">{d.time}</p>
+          <p class="distance-card__place">{d.place}</p>
+        </div>
+      ))}
     </div>
   </section>
 
@@ -64,7 +88,7 @@ const itinerary = [
     </div>
     <div class="map-embed">
       <iframe
-        title="Map showing Carlton Ridge Villa, Holetown, Barbados"
+        title="Map showing Carlton Ridge Villa, Barbados"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5251.372847697569!2d-59.646078219519886!3d13.1996256314916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c43efb59e7cbf55%3A0x5f7bfcce0f569775!2sCarlton%20Ridge%20Villa!5e0!3m2!1sen!2suk!4v1785094350463!5m2!1sen!2suk"
         loading="lazy"
         allowfullscreen
@@ -74,7 +98,7 @@ const itinerary = [
     <div class="wrap map-address">
       <p class="eyebrow eyebrow--light">Address</p>
       <h3>Carlton Ridge</h3>
-      <address>Carlton View Estate, Holetown<br />St. James, Barbados, West Indies</address>
+      <address>Carlton View Estate<br />St. James, Barbados, West Indies</address>
     </div>
   </section>
 
@@ -83,7 +107,7 @@ const itinerary = [
       <p class="eyebrow">The West Coast</p>
       <h2>Barbados at its most unhurried</h2>
       <div class="divider"></div>
-      <p class="lede">Carlton Ridge sits within Carlton View Estate, on Barbados’s celebrated West Coast &mdash; the stretch of coastline known locally as the Platinum Coast for its calm, reef-sheltered water and long tradition of quiet, well-kept residences. Holetown and Speightstown are both close by, along with the island’s best golf and some of its finest dining.</p>
+      <p class="lede lede--wide">Carlton Ridge sits within Carlton View Estate, on Barbados’s celebrated West Coast &mdash; the stretch of coastline known locally as the Platinum Coast for its calm, reef-sheltered water and long tradition of quiet, well-kept residences. Holetown and Speightstown are both close by, along with the island’s best golf and some of its finest dining.</p>
     </div>
 
     <div class="wrap nearby-grid">
@@ -189,6 +213,7 @@ const itinerary = [
   .eyebrow--light::before { background: var(--duck-egg); }
 
   .lede { max-width: 700px; color: var(--navy-soft); font-size: 1.05rem; }
+  .lede--wide { max-width: none; }
 
   .nearby-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; margin-top: 3rem; }
   .nearby-card { padding: 1.8rem; background: var(--duck-egg-pale); display: flex; flex-direction: column; }
@@ -197,6 +222,11 @@ const itinerary = [
   .nearby-card__phone { font-weight: 600; margin-top: 0.5rem !important; flex-grow: 0 !important; }
   .nearby-card__link { display: inline-block; margin-top: 1rem; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--navy); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; width: fit-content; }
   .nearby-card__link:hover { opacity: 0.7; }
+
+  .distance-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; margin-top: 3rem; }
+  .distance-card { padding: 1.8rem; background: var(--duck-egg-pale); text-align: center; }
+  .distance-card__time { font-family: var(--font-display); font-size: 1.8rem; color: var(--navy); margin: 0; }
+  .distance-card__place { font-size: 0.9rem; color: var(--navy-soft); margin: 0.4rem 0 0; }
 
   .dining-section { padding: 5rem 0; }
   .h2--light { color: var(--white); }
@@ -215,7 +245,7 @@ const itinerary = [
 
   .map-section { padding: 5rem 0 3rem; }
   .map-section__inner { padding-bottom: 2.5rem; }
-  .map-section__lede { max-width: 700px; margin-top: 1rem; font-size: 1.05rem; line-height: 1.6; color: var(--duck-egg-pale); }
+  .map-section__lede { margin-top: 1rem; font-size: 1.05rem; line-height: 1.6; color: var(--duck-egg-pale); }
   .map-embed { width: 600px; max-width: 100%; height: 450px; margin: 0 auto; }
   .map-embed iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.15); }
   .map-address { padding-top: 2.5rem; text-align: center; }
@@ -241,12 +271,14 @@ const itinerary = [
 
   @media (max-width: 900px) {
     .nearby-grid { grid-template-columns: 1fr 1fr; }
+    .distance-grid { grid-template-columns: 1fr 1fr; }
     .dining-grid { grid-template-columns: 1fr 1fr; }
     .recommend-grid { grid-template-columns: 1fr; }
     .itinerary-item { grid-template-columns: 1fr; gap: 0.4rem; }
   }
   @media (max-width: 560px) {
     .nearby-grid { grid-template-columns: 1fr; }
+    .distance-grid { grid-template-columns: 1fr; }
     .dining-grid { grid-template-columns: 1fr; }
   }
 </style>
