@@ -8,21 +8,89 @@ interface Props {
   description?: string;
   image?: string;
   imageAlt?: string;
+  noindex?: boolean;
 }
 const {
   title,
-  description = "Carlton Ridge — a private six-bedroom residence on Barbados's West Coast, Holetown, St. James.",
+  description = "Carlton Ridge Villa — a private six-bedroom residence on Barbados's West Coast, Holetown, St. James.",
   image = '/images/ArialSeaview.jpeg',
-  imageAlt = "Aerial view of Carlton Ridge and its heptagonal pool, Holetown, Barbados.",
+  imageAlt = "Aerial view of Carlton Ridge Villa and its heptagonal pool, Holetown, Barbados.",
+  noindex = false,
 } = Astro.props;
 
-const pageTitle = title.includes('Carlton Ridge') ? title : `${title} \u00b7 Carlton Ridge`;
+const pageTitle = title.includes('Carlton Ridge Villa') ? title : `${title} · Carlton Ridge Villa`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const imageURL = new URL(image, Astro.site);
+
+// Structured data: one linked graph per page (WebSite + the property), plus breadcrumbs on inner pages.
+const siteURL = new URL('/', Astro.site).toString();
+const isHome = Astro.url.pathname === '/';
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'WebSite',
+    '@id': `${siteURL}#website`,
+    url: siteURL,
+    name: 'Carlton Ridge Villa',
+    inLanguage: 'en',
+    publisher: { '@id': `${siteURL}#property` },
+  },
+  {
+    '@type': 'LodgingBusiness',
+    '@id': `${siteURL}#property`,
+    name: 'Carlton Ridge Villa',
+    description: "Carlton Ridge Villa — a private six-bedroom residence on Barbados's West Coast, Holetown, St. James.",
+    url: siteURL,
+    image: new URL('/images/ArialSeaview.jpeg', Astro.site).toString(),
+    telephone: '+1-246-422-3333',
+    priceRange: 'US$1,200-US$2,500 per night',
+    sameAs: ['https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE'],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Carlton View Estate',
+      addressLocality: 'Holetown',
+      addressRegion: 'St. James',
+      addressCountry: 'BB',
+    },
+    geo: { '@type': 'GeoCoordinates', latitude: 13.1996256, longitude: -59.6460782 },
+    numberOfRooms: 6,
+    amenityFeature: [
+      { '@type': 'LocationFeatureSpecification', name: 'Private Pool', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Air Conditioning', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Self-Contained Garden Residence', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Free Wi-Fi', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Free Parking', value: true },
+      { '@type': 'LocationFeatureSpecification', name: 'Fully Equipped Kitchen', value: true },
+    ],
+    containsPlace: [
+      {
+        '@type': 'Accommodation',
+        name: 'Main Residence',
+        numberOfBedrooms: 4,
+        occupancy: { '@type': 'QuantitativeValue', maxValue: 8 },
+      },
+      {
+        '@type': 'Accommodation',
+        name: 'Garden Residence',
+        numberOfBedrooms: 2,
+      },
+    ],
+  },
+];
+if (!isHome) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteURL },
+      { '@type': 'ListItem', position: 2, name: title, item: canonicalURL.toString() },
+    ],
+  });
+}
+const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
 ---
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-P352D0EMJQ"></script>
     <script>
@@ -39,6 +107,9 @@ const imageURL = new URL(image, Astro.site);
     <link rel="canonical" href={canonicalURL} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+    <meta name="theme-color" content="#16263A" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
@@ -49,7 +120,8 @@ const imageURL = new URL(image, Astro.site);
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={imageAlt} />
-    <meta property="og:site_name" content="Carlton Ridge" />
+    <meta property="og:site_name" content="Carlton Ridge Villa" />
+    <meta property="og:locale" content="en_GB" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={pageTitle} />
@@ -57,27 +129,8 @@ const imageURL = new URL(image, Astro.site);
     <meta name="twitter:image" content={imageURL} />
     <meta name="twitter:image:alt" content={imageAlt} />
 
-    <script type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'LodgingBusiness',
-      name: 'Carlton Ridge',
-      description: "Carlton Ridge — a private six-bedroom residence on Barbados's West Coast, Holetown, St. James.",
-      url: 'https://www.carltonridgevilla.com',
-      image: new URL('/images/ArialSeaview.jpeg', Astro.site).toString(),
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Carlton View Estate',
-        addressLocality: 'Holetown',
-        addressRegion: 'St. James',
-        addressCountry: 'BB',
-      },
-      numberOfRooms: 6,
-      amenityFeature: [
-        { '@type': 'LocationFeatureSpecification', name: 'Private Pool', value: true },
-        { '@type': 'LocationFeatureSpecification', name: 'Air Conditioning', value: true },
-        { '@type': 'LocationFeatureSpecification', name: 'Self-Contained Garden Residence', value: true },
-      ],
-    })} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <slot name="head" />
   </head>
   <body>
     <Header />

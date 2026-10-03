@@ -2,8 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const bedrooms = [
-  { title: 'Garden Residence Suite One', img: '/images/gardenresidenceleftbedroom.png', copy: 'A bright, en-suite bedroom fitted with a full-size bed (UK king equivalent), a walk-in wardrobe and an in-room safe for valuables. Ceiling fans and air conditioning keep the room cool through the day, and the adjoining living area \u2014 with its own full kitchen and access out to the shared patio \u2014 means guests staying here can come and go entirely on their own schedule, right down to their own front door and parking.' },
-  { title: 'Garden Residence Suite Two', img: '/images/gardenresidencerightbedroom.png', copy: 'The second bedroom in the garden residence shares the same easy, independent footprint \u2014 en suite, air-conditioned, and furnished with a full-size bed (UK king equivalent), walk-in wardrobe and in-room safe. Tucked among Carlton Ridge\u2019s manicured gardens and flowering trees, it\u2019s a quiet, restful spot just off the garden residence\u2019s shared living space, with the patio, pool, gazebo and wet bar only a short stroll away.' },
+  { title: 'Garden Residence Suite One', img: '/images/gardenresidenceleftbedroom.png', copy: 'A bright, en-suite bedroom fitted with a full-size bed (UK king equivalent), a walk-in wardrobe and an in-room safe for valuables. Ceiling fans and air conditioning keep the room cool through the day, and the adjoining living area — with its own full kitchen and access out to the shared patio — means guests staying here can come and go entirely on their own schedule, right down to their own front door and parking.' },
+  { title: 'Garden Residence Suite Two', img: '/images/gardenresidencerightbedroom.png', copy: 'The second bedroom in the garden residence shares the same easy, independent footprint — en suite, air-conditioned, and furnished with a full-size bed (UK king equivalent), walk-in wardrobe and in-room safe. Tucked among Carlton Ridge’s manicured gardens and flowering trees, it’s a quiet, restful spot just off the garden residence’s shared living space, with the patio, pool, gazebo and wet bar only a short stroll away.' },
 ];
 
 const sharedFeatures = [
@@ -20,7 +20,7 @@ const sharedFeatures = [
 ---
 <BaseLayout title="The Garden Residence" description="A private, self-contained two-bedroom garden residence at Carlton Ridge, with its own kitchen, living area and patio.">
   <section class="page-hero">
-    <img src="/images/gardenresidenceleftbedroom.png" alt="Bedroom in the garden residence at Carlton Ridge" class="page-hero__img" />
+    <img src="/images/gardenresidenceleftbedroom.png" alt="Bedroom in the garden residence at Carlton Ridge" class="page-hero__img" fetchpriority="high" decoding="async" />
     <div class="page-hero__scrim"></div>
     <div class="wrap page-hero__content">
       <p class="eyebrow eyebrow--light">The property</p>
@@ -39,8 +39,8 @@ const sharedFeatures = [
         <p>Finished to the same standard as the main villa and fully air-conditioned throughout, it offers a genuine home-within-a-home, multigenerational escape &mdash; ideal for grandparents seeking their own space, older children wanting a little independence, or a family with small children who prefer some space away from the main house.</p>
       </div>
       <div class="cottage__images">
-        <img src="/images/CottageLivingRoom.jpeg" alt="Garden residence living room at Carlton Ridge" />
-        <img src="/images/CottageTerrace.jpeg" alt="Garden residence private terrace at Carlton Ridge" />
+        <img src="/images/CottageLivingRoom.jpeg" alt="Garden residence living room at Carlton Ridge" loading="lazy" decoding="async" />
+        <img src="/images/CottageTerrace.jpeg" alt="Garden residence private terrace at Carlton Ridge" loading="lazy" decoding="async" />
       </div>
     </div>
   </section>
@@ -54,7 +54,7 @@ const sharedFeatures = [
     <div class="wrap bedroom-grid">
       {bedrooms.map(b => (
         <div class="feature-card">
-          <img src={b.img} alt={b.title} />
+          <img src={b.img} alt={b.title} loading="lazy" decoding="async" />
           <h3>{b.title}</h3>
           <p>{b.copy}</p>
         </div>
