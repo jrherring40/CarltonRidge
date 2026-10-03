@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Reviews" description="Our story and guest reviews for Carlton Ridge, Barbados.">
+  <section class="page-hero">
+    <div class="wrap page-hero__content">
+      <p class="eyebrow">Guest voices</p>
+      <h1>Reviews</h1>
+    </div>
+  </section>
+
+  <section class="section section-sand">
+    <div class="wrap story">
+      <h2>Our Story</h2>
+      <p>For the past 15 years, Barbados has been a special place for our family. We’ve returned for its beautiful beaches, welcoming people and relaxed way of life.</p>
+      <p>In summer 2026, we were privileged to buy Carlton Ridge as our holiday home. As we prepare for our inaugural rental season, we can’t wait to open our doors and share our favourite corner of the island with you.</p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .page-hero { background: var(--navy); padding: 6rem 0 3rem; color: var(--white); }
+  .page-hero__content h1 { color: var(--white); }
+
+  .story { max-width: 780px; }
+  .story h2 { margin-bottom: 1.2rem; }
+  .story p { color: var(--navy-soft); line-height: 1.7; margin-top: 1rem; }
+</style>
