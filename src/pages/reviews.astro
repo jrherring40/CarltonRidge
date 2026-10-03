@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import logo from '../assets/carlton-ridge-logo.svg?raw';
 ---
 <BaseLayout title="Reviews" description="Our story and guest reviews for Carlton Ridge, Barbados.">
   <section class="page-hero">
@@ -16,6 +17,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p>In summer 2026, we were privileged to buy Carlton Ridge as our holiday home. As we prepare for our inaugural rental season, we can’t wait to open our doors and share our favourite corner of the island with you.</p>
     </div>
   </section>
+
+  <section class="logo-band">
+    <div class="wrap" set:html={logo} />
+  </section>
 </BaseLayout>
 
 <style>
@@ -25,4 +30,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .story { max-width: 780px; }
   .story h2 { margin-bottom: 1.2rem; }
   .story p { color: var(--navy-soft); line-height: 1.7; margin-top: 1rem; }
+
+  /* Logo SVG has a white backdrop, so give it a matching white band */
+  .logo-band { background: #fff; padding: 3rem 0; }
+  .logo-band :global(svg) { display: block; width: 100%; max-width: 780px; height: auto; margin: 0 auto; }
 </style>
