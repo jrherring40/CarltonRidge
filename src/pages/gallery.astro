@@ -7,11 +7,10 @@ const sections = [
   {
     id: 'grounds',
     title: 'The grounds & pool',
-    intro: 'The estate from above, the heptagonal pool and the covered patio, by day and at sunset.',
     photos: [
       { src: '/images/ArialSeaview.jpeg', where: 'Grounds', caption: 'Main residence and sea view', alt: 'Drone view over palm trees to a single-storey house with a dark hipped roof, a curving paved driveway and the blue sea on the horizon' },
       { src: '/images/AerialPlan.jpeg', where: 'Grounds', caption: 'Main residence, pool and gardens', alt: 'Top-down aerial view of the grey-roofed house wrapped around a courtyard, with the pool and sun loungers at the top and a separate wing to the right' },
-      { src: '/images/Pool.png', where: 'Grounds', caption: 'Heptagonal pool and sun terrace', alt: 'Turquoise pool with a stainless-steel rail, wicker sun loungers on a pale stone deck, a gazebo bar at left and the house behind palms' },
+      { src: '/images/Pool.png', where: 'Grounds', caption: 'Pool and sun terrace', alt: 'Turquoise pool with a stainless-steel rail, wicker sun loungers on a pale stone deck, a gazebo bar at left and the house behind palms' },
       { src: '/images/patio.png', where: 'Main residence', caption: 'Covered dining terrace', alt: 'Shaded stone terrace with white-cushioned wicker armchairs, a long dining table and arched openings looking onto the pool' },
       { src: '/images/poolsunset.png', where: 'Grounds', caption: 'Pool and gazebo at sunset', alt: 'Pool, loungers and a small gazebo bar under a pink and orange sunset sky with palm silhouettes' },
       { src: '/images/poolpatiosunset.png', where: 'Grounds', caption: 'Terrace and pool at dusk', alt: 'Arched patio glowing with warm lights and set with a dining table, reflected in the pool at dusk' },
@@ -20,7 +19,6 @@ const sections = [
   {
     id: 'main-residence',
     title: 'Main residence',
-    intro: 'Open-plan living, dining and games space in the four-bedroom main house.',
     photos: [
       { src: '/images/LivingRoom.jpeg', where: 'Main residence', caption: 'Main residence living room', alt: 'High-ceilinged living room with a large sectional sofa, wall-mounted TV and curtained openings to a terrace' },
       { src: '/images/PoolTable.jpeg', where: 'Main residence', caption: 'Games room and pool table', alt: 'Pool table racked up in the middle of an open room, with the kitchen and breakfast bar to the left and sofas to the right' },
@@ -32,8 +30,8 @@ const sections = [
     title: 'Bedrooms & bathroom',
     intro: 'The master suite and bathroom and the guest suites, all in the main residence. The garden residence bedrooms are in the next section.',
     photos: [
-      { src: '/images/MasterBathroom.jpeg', where: 'Main residence', caption: 'Master bathroom', alt: 'Stone-tiled bathroom with a raised oval bath, a glass-enclosed shower with a bench and double vanities' },
       { src: '/images/mastersuite2.png', where: 'Main residence', caption: 'Master suite and veranda', alt: 'Cream four-poster bed with blue accents, a sitting chair and open doors leading to a veranda and the pool' },
+      { src: '/images/MasterBathroom.jpeg', where: 'Main residence', caption: 'Master bathroom', alt: 'Stone-tiled bathroom with a raised oval bath, a glass-enclosed shower with a bench and double vanities' },
       { src: '/images/masterguestpool.png', where: 'Main residence', caption: 'Poolside guest suite', alt: 'Dark wood four-poster bed beside louvred wardrobes, with open double doors to a garden patio' },
       { src: '/images/blushpinkroom.png', where: 'Main residence', caption: 'Guest bedroom', alt: 'Bedroom with a white-washed wicker bed, pink quilted bedding, a bedside lamp and a sheer-curtained window' },
       { src: '/images/villaguestroom3.png', where: 'Main residence', caption: 'Guest suite with garden doors', alt: 'Bedroom with a dark wood bed, white linens, a ceiling fan and tall French doors with curtains' },
@@ -42,7 +40,6 @@ const sections = [
   {
     id: 'garden-residence',
     title: 'Garden residence',
-    intro: 'The separate two-bedroom garden residence, with its own entrance, kitchen and terrace.',
     photos: [
       { src: '/images/gardenresidenceleftbedroom.png', where: 'Garden residence', caption: 'Garden residence, Suite One', alt: 'Bedroom with a white bed, vaulted beamed ceiling and three tall windows onto green foliage' },
       { src: '/images/gardenresidencerightbedroom.png', where: 'Garden residence', caption: 'Garden residence, Suite Two', alt: 'Bedroom with a white bed, beamed ceiling, an armchair and windows looking toward the pool' },
@@ -55,8 +52,8 @@ const sections = [
 let n = 0;
 const numbered = sections.map(sec => ({ ...sec, photos: sec.photos.map(p => ({ ...p, index: n++ })) }));
 const total = n;
-// Skip the residence label when the title already names it (e.g. "Main residence living room").
-const showWhere = (p: { where: string; caption: string }) => !p.caption.toLowerCase().includes(p.where.toLowerCase());
+// Skip the label for the grounds, and when the title already names the residence (e.g. "Main residence living room").
+const showWhere = (p: { where: string; caption: string }) => p.where !== 'Grounds' && !p.caption.toLowerCase().includes(p.where.toLowerCase());
 ---
 <BaseLayout title="Gallery" description="Photographs of Carlton Ridge: the grounds and pool, main residence, bedrooms and the garden residence.">
   <section class="page-hero">
@@ -75,7 +72,7 @@ const showWhere = (p: { where: string; caption: string }) => !p.caption.toLowerC
       <div class="wrap">
         <h2 id={`${sec.id}-title`}>{sec.title}</h2>
         <div class="divider"></div>
-        <p class="gallery-section__intro">{sec.intro}</p>
+        {sec.intro && <p class="gallery-section__intro">{sec.intro}</p>}
         <ul class="gallery-grid">
           {sec.photos.map(img => (
             <li class="gallery-grid__cell">
@@ -126,9 +123,9 @@ const showWhere = (p: { where: string; caption: string }) => !p.caption.toLowerC
   .gallery-jump a:hover { color: var(--duck-egg); }
 
   .gallery-section { scroll-margin-top: 4rem; }
-  .gallery-section__intro { color: var(--navy-soft); max-width: 640px; margin-bottom: 2.2rem; }
+  .gallery-section__intro { color: var(--navy-soft); max-width: 640px; margin-bottom: 0; }
 
-  .gallery-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem 1.2rem; }
+  .gallery-grid { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem 1.2rem; }
   .gallery-item { display: block; width: 100%; padding: 0; border: none; background: none; cursor: pointer; }
   .gallery-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; transition: opacity 0.3s ease; }
   .gallery-item:hover img { opacity: 0.85; }
