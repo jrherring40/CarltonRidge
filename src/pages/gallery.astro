@@ -6,7 +6,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const sections = [
   {
     id: 'grounds',
-    title: 'The grounds & pool',
+    title: 'The Grounds & Pool',
     photos: [
       { src: '/images/ArialSeaview.jpeg', where: 'Grounds', caption: 'Main residence and sea view', alt: 'Drone view over palm trees to a single-storey house with a dark hipped roof, a curving paved driveway and the blue sea on the horizon' },
       { src: '/images/AerialPlan.jpeg', where: 'Grounds', caption: 'Main residence, pool and gardens', alt: 'Top-down aerial view of the grey-roofed house wrapped around a courtyard, with the pool and sun loungers at the top and a separate wing to the right' },
@@ -18,7 +18,7 @@ const sections = [
   },
   {
     id: 'main-residence',
-    title: 'Main residence',
+    title: 'The Main Residence',
     photos: [
       { src: '/images/LivingRoom.jpeg', where: 'Main residence', caption: 'Main residence living room', alt: 'High-ceilinged living room with a large sectional sofa, wall-mounted TV and curtained openings to a terrace' },
       { src: '/images/PoolTable.jpeg', where: 'Main residence', caption: 'Games room and pool table', alt: 'Pool table racked up in the middle of an open room, with the kitchen and breakfast bar to the left and sofas to the right' },
@@ -27,7 +27,7 @@ const sections = [
   },
   {
     id: 'bedrooms',
-    title: 'Bedrooms & bathroom',
+    title: 'Suites & Bathrooms',
     photos: [
       { src: '/images/mastersuite2.png', where: 'Main residence', caption: 'Master suite and veranda', alt: 'Cream four-poster bed with blue accents, a sitting chair and open doors leading to a veranda and the pool' },
       { src: '/images/MasterBathroom.jpeg', where: 'Main residence', caption: 'Master bathroom', alt: 'Stone-tiled bathroom with a raised oval bath, a glass-enclosed shower with a bench and double vanities' },
@@ -38,7 +38,7 @@ const sections = [
   },
   {
     id: 'garden-residence',
-    title: 'Garden residence',
+    title: 'The Garden Residence',
     photos: [
       { src: '/images/gardenresidenceleftbedroom.png', where: 'Garden residence', caption: 'Garden residence, Suite One', alt: 'Bedroom with a white bed, vaulted beamed ceiling and three tall windows onto green foliage' },
       { src: '/images/gardenresidencerightbedroom.png', where: 'Garden residence', caption: 'Garden residence, Suite Two', alt: 'Bedroom with a white bed, beamed ceiling, an armchair and windows looking toward the pool' },
@@ -55,9 +55,9 @@ const total = n;
 <BaseLayout title="Gallery" description="Photographs of Carlton Ridge: the grounds and pool, main residence, bedrooms and the garden residence.">
   <section class="page-hero">
     <div class="wrap page-hero__content">
-      <p class="eyebrow">In pictures</p>
-      <h1>Gallery</h1>
-      <p>{total} photos of Carlton Ridge, from the air to the garden residence terrace.</p>
+      <p class="eyebrow">Explore Carlton Ridge</p>
+      <h1>A glimpse of Carlton Ridge</h1>
+      <p>From the gardens and pool to the light-filled interiors and private terraces, explore Carlton Ridge in pictures.</p>
       <nav class="gallery-jump" aria-label="Gallery sections">
         {numbered.map(sec => <a href={`#${sec.id}`}>{sec.title}</a>)}
       </nav>
