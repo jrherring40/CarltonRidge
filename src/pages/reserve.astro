@@ -32,8 +32,8 @@ const rates = [
             <thead>
               <tr>
                 <th scope="col"></th>
-                <th scope="col"><span class="rates-table__head">6 bedrooms &middot; up to 12 guests</span><span class="rates-table__unit">Per night (US$)</span></th>
-                <th scope="col"><span class="rates-table__head">4 bedrooms &middot; up to 8 guests</span><span class="rates-table__unit">Per night (US$)</span></th>
+                <th scope="col"><span class="rates-table__head">6 bedrooms</span><span class="rates-table__guests">Up to 12 guests</span><span class="rates-table__unit">Per night (US$)</span></th>
+                <th scope="col"><span class="rates-table__head">4 bedrooms</span><span class="rates-table__guests">Up to 8 guests</span><span class="rates-table__unit">Per night (US$)</span></th>
               </tr>
             </thead>
             <tbody>
@@ -93,7 +93,8 @@ const rates = [
   .rates-table { width: 100%; border-collapse: collapse; min-width: 420px; }
   .rates-table th, .rates-table td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid rgba(22,38,58,0.12); }
   .rates-table thead th { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-soft); font-weight: 600; }
-  .rates-table__head, .rates-table__unit { display: block; }
+  .rates-table__head, .rates-table__guests, .rates-table__unit { display: block; }
+  .rates-table__guests { margin-top: 0.3rem; }
   .rates-table__unit { margin-top: 0.3rem; color: var(--navy); letter-spacing: 0.06em; }
   .rates-table tbody th { font-weight: 600; color: var(--navy); }
   .rates-table tbody td { color: var(--navy-soft); }
