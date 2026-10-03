@@ -150,10 +150,11 @@ const current = Astro.url.pathname;
       padding: 2rem 2.5rem;
       gap: 1.6rem;
       transform: translateX(100%);
-      transition: transform 0.4s ease;
+      visibility: hidden;
+      transition: transform 0.4s ease, visibility 0s linear 0.4s;
       z-index: 2;
     }
-    .nav__list.is-open { transform: translateX(0); }
+    .nav__list.is-open { transform: translateX(0); visibility: visible; transition-delay: 0s; }
   }
 
   @media (max-width: 420px) {
