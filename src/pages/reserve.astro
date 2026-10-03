@@ -6,9 +6,9 @@ const PHONE_DISPLAY = '+1 (246) 422-3333';
 const PHONE_TEL = 'tel:+12464223333';
 
 const rates = [
-  { season: 'Christmas', six: 'US$2,500', four: 'US$1,667' },
-  { season: 'Winter', six: 'US$1,700', four: 'US$1,134' },
-  { season: 'Summer', six: 'US$1,200', four: 'US$800' },
+  { season: 'Christmas', six: '2,500', four: '1,667' },
+  { season: 'Winter', six: '1,700', four: '1,134' },
+  { season: 'Summer', six: '1,200', four: '800' },
 ];
 ---
 <BaseLayout title="Reserve" description="Rates and availability for staying at Carlton Ridge, Barbados.">
@@ -32,8 +32,8 @@ const rates = [
             <thead>
               <tr>
                 <th scope="col"></th>
-                <th scope="col">6 Bedrooms (Up to 12 guests)</th>
-                <th scope="col">4 Bedrooms (Up to 8 guests)</th>
+                <th scope="col"><span class="rates-table__head">6 bedrooms &middot; up to 12 guests</span><span class="rates-table__unit">Per night (US$)</span></th>
+                <th scope="col"><span class="rates-table__head">4 bedrooms &middot; up to 8 guests</span><span class="rates-table__unit">Per night (US$)</span></th>
               </tr>
             </thead>
             <tbody>
@@ -47,7 +47,7 @@ const rates = [
             </tbody>
           </table>
         </div>
-        <p class="rates-note">Rates per night, plus 10% Shared Economy Levy and 2.5% Service Fee.</p>
+        <p class="rates-note">Rates are per night in US dollars. A 10% Shared Economy Levy and 2.5% Service Fee are added.</p>
 
         <div class="next-steps">
           <p class="eyebrow">What happens next?</p>
@@ -68,7 +68,7 @@ const rates = [
         <p>Carlton Ridge is available as the full six-bedroom residence for up to 12 guests, or as the four-bedroom main house for smaller groups.</p>
         <p>Choose your dates below to see current availability and rates. Bookings are handled by our Barbados-based rental team at Island Villas.</p>
         <div class="managed-by__actions">
-          <a href={ISLAND_VILLAS_URL} class="btn btn-gold" target="_blank" rel="noreferrer">Check Availability via Island Villas</a>
+          <a href={ISLAND_VILLAS_URL} class="btn btn-gold" target="_blank" rel="noreferrer">Check Availability</a>
           <a href={PHONE_TEL} class="btn btn-outline-dark">Call {PHONE_DISPLAY}</a>
         </div>
         <p class="managed-by__extra">The team can also help arrange airport transfers, chefs, drivers and experiences during your stay.</p>
@@ -93,6 +93,8 @@ const rates = [
   .rates-table { width: 100%; border-collapse: collapse; min-width: 420px; }
   .rates-table th, .rates-table td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid rgba(22,38,58,0.12); }
   .rates-table thead th { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy-soft); font-weight: 600; }
+  .rates-table__head, .rates-table__unit { display: block; }
+  .rates-table__unit { margin-top: 0.3rem; color: var(--navy); letter-spacing: 0.06em; }
   .rates-table tbody th { font-weight: 600; color: var(--navy); }
   .rates-table tbody td { color: var(--navy-soft); }
   .rates-table tbody tr:hover { background: var(--duck-egg-pale); }
@@ -107,7 +109,7 @@ const rates = [
   .managed-by p + p { margin-top: 1rem; }
   .managed-by .managed-by__extra { margin-top: 1.4rem; }
   .managed-by__actions { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.6rem; }
-  .managed-by__actions .btn { width: 100%; box-sizing: border-box; text-align: center; justify-content: center; }
+  .managed-by__actions .btn { width: 100%; min-height: 3.4rem; white-space: nowrap; box-sizing: border-box; text-align: center; justify-content: center; }
 
   .next-steps { margin-top: 3rem; }
   .next-steps h3 { margin-top: 0.4rem; }
@@ -122,5 +124,9 @@ const rates = [
   }
   @media (max-width: 560px) {
     .reserve { --card-pad: 1.6rem; }
+    .rates-table { min-width: 0; }
+    .rates-table th, .rates-table td { padding: 0.8rem 0.6rem; }
+    .rates-table thead th { font-size: 0.66rem; letter-spacing: 0.06em; line-height: 1.4; vertical-align: bottom; }
+    .managed-by__actions .btn { padding-left: 1em; padding-right: 1em; letter-spacing: 0.1em; }
   }
 </style>
