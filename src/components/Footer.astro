@@ -1,6 +1,4 @@
 ---
-import Heptagon from './Heptagon.astro';
-
 const AVAILABILITY_URL = 'https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE#/';
 const PHONE_DISPLAY = '+1 (246) 422-3333';
 const PHONE_TEL = 'tel:+12464223333';
@@ -11,11 +9,11 @@ const pad = (n: number) => String(n).padStart(2, '0');
 const buildTime = `${pad(now.getUTCDate())}/${pad(now.getUTCMonth() + 1)}/${now.getUTCFullYear()} ${pad(now.getUTCHours())}:${pad(now.getUTCMinutes())} UTC`;
 ---
 <footer class="site-footer">
-  <Heptagon size={340} stroke="rgba(175,201,196,0.15)" class="footer-motif" />
   <div class="wrap footer-inner">
     <div class="footer-col">
       <span class="brand__name">Carlton Ridge</span>
       <p class="footer-addr">Carlton View Estate, Holetown<br />St. James, Barbados, West Indies</p>
+      <img class="footer-mark" src="/favicon.svg" width="120" height="120" alt="" />
     </div>
     <div class="footer-col">
       <p class="footer-label">Reserve</p>
@@ -46,9 +44,11 @@ const buildTime = `${pad(now.getUTCDate())}/${pad(now.getUTCMonth() + 1)}/${now.
     padding: 4.5rem 0 2rem;
     overflow: hidden;
   }
-  .footer-motif {
-    position: absolute;
-    right: -60px; top: -80px;
+  .footer-mark {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin-top: 1.4rem;
   }
   .footer-inner {
     position: relative;
