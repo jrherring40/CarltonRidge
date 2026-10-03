@@ -30,14 +30,14 @@ const graph: Record<string, unknown>[] = [
     '@type': 'WebSite',
     '@id': `${siteURL}#website`,
     url: siteURL,
-    name: 'Carlton Ridge',
+    name: 'Carlton Ridge Villa',
     inLanguage: 'en',
     publisher: { '@id': `${siteURL}#property` },
   },
   {
     '@type': 'LodgingBusiness',
     '@id': `${siteURL}#property`,
-    name: 'Carlton Ridge',
+    name: 'Carlton Ridge Villa',
     description: "Carlton Ridge — a private six-bedroom residence on Barbados's West Coast, Holetown, St. James.",
     url: siteURL,
     image: new URL('/images/ArialSeaview.jpeg', Astro.site).toString(),
@@ -120,7 +120,7 @@ const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={imageAlt} />
-    <meta property="og:site_name" content="Carlton Ridge" />
+    <meta property="og:site_name" content="Carlton Ridge Villa" />
     <meta property="og:locale" content="en_GB" />
 
     <meta name="twitter:card" content="summary_large_image" />
