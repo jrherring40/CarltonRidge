@@ -77,3 +77,21 @@ If you'd later like real form submissions (e.g. via Formspree or a Cloudflare Pa
 - [ ] Update footer address/contact details if needed
 - [ ] Set the real domain in `astro.config.mjs` (`site:`)
 - [ ] Add real map coordinates in `src/pages/location.astro` if you want a pin rather than an area search
+
+## Post-change site checks (Playwright)
+
+A manual smoke test to run after merging a significant pull request. It runs on desktop and mobile viewports and checks that:
+
+- every page in the sitemap returns 200, with a title, one `<h1>`, a meta description and a production canonical URL
+- images load, internal links resolve, and there is no console error, failed request or horizontal scroll
+- `robots.txt` is present, unknown routes serve the 404 page, and `/reserve/` links to Island Villas
+
+```bash
+npx playwright install chromium   # first time only
+
+npm run test:site                 # builds, previews locally, and tests that
+npm run test:live                 # tests https://www.carltonridgevilla.com
+SITE_URL=https://example.com npm run test:site   # any other URL, e.g. a staging host
+```
+
+Full-page screenshots for each page and viewport are attached to the HTML report (`npx playwright show-report`). Run it before and after a change to compare them.
