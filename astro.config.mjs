@@ -3,7 +3,7 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  integrations: [react(), sitemap({ filter: (page) => !page.includes('/enquire') })],
+  integrations: [react(), sitemap()],
   site: 'https://www.carltonridgevilla.com',
   trailingSlash: 'always'
 });
