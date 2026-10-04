@@ -2,6 +2,13 @@ import { test, expect } from '@playwright/test';
 
 const PRODUCTION_HOST = 'www.carltonridgevilla.com';
 
+// Don't load analytics in tests: avoids CORS noise on localhost and keeps test visits
+// out of the real stats.
+test.beforeEach(async ({ context }) => {
+  await context.route(/cloudflareinsights\.com/, (route) =>
+    route.fulfill({ status: 200, contentType: 'application/javascript', body: '' }));
+});
+
 // Routes come from the target's own sitemap so new pages are picked up automatically.
 async function getRoutes(request) {
   const index = await request.get('/sitemap-index.xml');
