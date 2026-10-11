@@ -1,6 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import logo from '../assets/carlton-ridge-logo.svg?raw';
+
+// Guest reviews. Paragraph text must be reproduced exactly as supplied.
+const reviews = [
+  {
+    author: '',
+    detail: 'August 2026',
+    paragraphs: [
+      'We had a wonderful stay in Barbados and absolutely loved the villa. It was such an enjoyable place to relax and socialise with our friends.',
+      'It worked perfectly for multiple families (we were two families). Our family stayed in the Garden Residence and we really enjoyed having a separate small kitchen and living area. This allowed us to have some down time as a family. It would also be a great place for Grandparents.',
+      'The whole villa is stunning and so well equipped. It had everything we needed and was a real home from home.  It was a lovely base for exploring local beaches and tourist attractions (we hired a car for the whole holiday which I would recommend).',
+      'The pool was a really lovely size and the perfect temperature. We all enjoyed spending lots of time relaxing by it /  playing in it.',
+      'The villa, pool and gardens are so spacious it meant we could all hang out together really easily or also find a quiet corner for a relaxing read in the shade.',
+      'We couldn’t have asked for a better place for a fantastic family holiday and would happily return!',
+    ],
+  },
+];
 ---
 <BaseLayout title="Reviews" description="Our story and guest reviews for Carlton Ridge, Barbados.">
   <section class="page-hero">
@@ -18,6 +34,30 @@ import logo from '../assets/carlton-ridge-logo.svg?raw';
     </div>
   </section>
 
+  <section class="section section-duckegg" aria-labelledby="guest-reviews-heading">
+    <div class="wrap reviews">
+      <p class="eyebrow">From our guests</p>
+      <h2 id="guest-reviews-heading">What our guests say</h2>
+
+      {reviews.map((r) => (
+        <article class="review">
+          <blockquote class="review__body">
+            {r.paragraphs.map((p) => <p>{p}</p>)}
+          </blockquote>
+          <p class="review__author">
+            {r.author && <strong>{r.author}</strong>}
+            {r.author && r.detail && <span> · </span>}
+            {r.detail && <span>{r.detail}</span>}
+          </p>
+        </article>
+      ))}
+
+      <div class="reviews__cta">
+        <a class="btn btn-gold" href="https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE#/" target="_blank" rel="noopener">Check availability</a>
+      </div>
+    </div>
+  </section>
+
   <section class="logo-band">
     <div class="wrap" set:html={logo} />
   </section>
@@ -30,6 +70,32 @@ import logo from '../assets/carlton-ridge-logo.svg?raw';
   .story { max-width: 780px; }
   .story h2 { margin-bottom: 1.2rem; }
   .story p { color: var(--navy-soft); line-height: 1.7; margin-top: 1rem; }
+
+  .reviews { max-width: 780px; }
+  .reviews h2 { margin-bottom: 2rem; }
+
+  .review {
+    background: var(--white);
+    border-top: 3px solid var(--gold);
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    box-shadow: 0 10px 30px rgba(22, 38, 58, 0.06);
+  }
+  .review + .review { margin-top: 2rem; }
+
+  .review__body { margin: 0; padding: 0; border: 0; }
+  .review__body p { color: var(--navy-soft); line-height: 1.75; margin-top: 1rem; }
+  .review__body p:first-child { margin-top: 0; }
+
+  .review__author {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--duck-egg-pale);
+    color: var(--navy);
+    font-size: 0.95rem;
+  }
+  .review__author span { color: var(--navy-soft); }
+
+  .reviews__cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
 
   /* Logo SVG has a white backdrop, so give it a matching white band */
   .logo-band { background: #fff; padding: 3rem 0; }
