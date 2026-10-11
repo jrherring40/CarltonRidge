@@ -5,7 +5,7 @@ import logo from '../assets/carlton-ridge-logo.svg?raw';
 // Guest reviews. Paragraph text must be reproduced exactly as supplied.
 const reviews = [
   {
-    author: 'UH',
+    author: '',
     detail: 'August 26',
     paragraphs: [
       'We had a wonderful stay in Barbados and absolutely loved the villa. It was such an enjoyable place to relax and socialise with our friends.',
@@ -45,8 +45,9 @@ const reviews = [
             {r.paragraphs.map((p) => <p>{p}</p>)}
           </blockquote>
           <p class="review__author">
-            <strong>{r.author}</strong>
-            {r.detail && <span> · {r.detail}</span>}
+            {r.author && <strong>{r.author}</strong>}
+            {r.author && r.detail && <span> · </span>}
+            {r.detail && <span>{r.detail}</span>}
           </p>
         </article>
       ))}
