@@ -4,7 +4,7 @@ Astro + React marketing site for a Barbados villa. Production: https://www.carlt
 
 ## Site checks (Playwright)
 
-The suite in `tests/site.spec.js` smoke-tests every page in the sitemap on desktop and mobile. Run it as part of any significant change.
+The suite in `tests/site.spec.js` smoke-tests every page in the sitemap on desktop and mobile. Only run it when the user explicitly asks; don't run it automatically after changes.
 First time only: `npx playwright install chromium`.
 
 ### On a PR branch (before merging)
