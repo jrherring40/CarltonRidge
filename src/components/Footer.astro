@@ -2,6 +2,8 @@
 const AVAILABILITY_URL = 'https://www.island-villas.com/properties/21809035/lettings/carlton-ridge/CARLTONRIDGE#/';
 const PHONE_DISPLAY = '+1 (246) 422-3333';
 const PHONE_TEL = 'tel:+12464223333';
+const INSTAGRAM_URL = 'https://www.instagram.com/carltonridge_barbados';
+const INSTAGRAM_HANDLE = '@carltonridge_barbados';
 
 const buildSha = (process.env.CF_PAGES_COMMIT_SHA || 'dev').slice(0, 7);
 const now = new Date();
@@ -19,6 +21,7 @@ const buildTime = `${pad(now.getUTCDate())}/${pad(now.getUTCMonth() + 1)}/${now.
       <p class="footer-label">Reserve</p>
       <a href={AVAILABILITY_URL} target="_blank" rel="noreferrer">Reserve via Island Villas</a>
       <a href={PHONE_TEL}>Call {PHONE_DISPLAY}</a>
+      <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer">Instagram {INSTAGRAM_HANDLE}</a>
     </div>
     <div class="footer-col">
       <p class="footer-label">Explore</p>
